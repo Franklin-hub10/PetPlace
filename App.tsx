@@ -1,20 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+
+import { ImageBackground, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import Portada from './src/screens/Portada';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+<SafeAreaView style = {styles.container}>
+
+
+<Portada/>
+
+
+</SafeAreaView>
+
+
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+  },
+  backgroundImage: {
+
+    flex: 2,
     justifyContent: 'center',
+    alignItems: 'center',
+    resizeMode: 'contain',
+    width: '100%', 
+    height: '100%',
+  },
+  text: {
+    color: 'white',
+    fontSize: 24,
+    fontWeight: 'bold',
   },
 });
