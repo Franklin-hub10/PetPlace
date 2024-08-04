@@ -18,15 +18,16 @@ const Portada = () => {
   return (
     <View style={styles.container}>
       <ImageBackground 
-        source={require('../../assets/Logo1.png')}
+        source={require('../../assets/startup_screen.png')}
         style={styles.backgroundImage}
         resizeMode="cover"
       >
         {visible ? (
           <ImageBackground 
-            source={require('../../assets/Logo1.png')}
+            source={require('../../assets/background_image.png')}
             style={styles.logo}
-            resizeMode="contain"
+            resizeMode="cover"
+
           />
         ) : (
           <View style={styles.loginContainer}>
@@ -71,8 +72,8 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   logo: {
-    width: '80%',
-    height: '50%',
+    width: '100%',
+    height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
   },

@@ -1,13 +1,14 @@
 
 import { ImageBackground, SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import Portada from './src/screens/Portada';
+import { NavigationContainer } from '@react-navigation/native';
+import StackNavigator from './src/navigator/StackNavigator';
 
 export default function App() {
   return (
 <SafeAreaView style = {styles.container}>
 
 
-<Portada/>
+<StackNavigator />
 
 
 </SafeAreaView>
