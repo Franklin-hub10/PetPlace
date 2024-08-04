@@ -12,9 +12,9 @@ const Registro = () => {
   return (
     <View style={styles.container}>
             <ImageBackground
-        source={require('../../assets/banner_image.png')}
+        source={require('../../assets/icon_192.png')}
         style={styles.backgroundImage}
-        resizeMode="cover"
+       // resizeMode="cover"
       ></ImageBackground>
       <Text style={styles.title}>Registro</Text>
 
