@@ -1,38 +1,20 @@
-
-import { ImageBackground, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import StackNavigator from './src/navigator/StackNavigator';
+import StackNavigator from './src/navigator/StackNavigator'; // Ajusta la ruta según tu estructura de archivos
 
 export default function App() {
   return (
-<SafeAreaView style = {styles.container}>
-
-
-<StackNavigator />
-
-
-</SafeAreaView>
-
-
+    <SafeAreaView style={styles.container}>
+      <NavigationContainer>
+        <StackNavigator />
+      </NavigationContainer>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  backgroundImage: {
-
-    flex: 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-    resizeMode: 'contain',
-    width: '100%', 
-    height: '100%',
-  },
-  text: {
-    color: 'white',
-    fontSize: 24,
-    fontWeight: 'bold',
   },
 });

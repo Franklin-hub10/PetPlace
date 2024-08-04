@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
+import { Parametro } from '../navigator/StackNavigator';
 
 const Portada = () => {
   const [visible, setVisible] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigation = useNavigation<NavigationProp<Parametro>>();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -17,17 +21,16 @@ const Portada = () => {
 
   return (
     <View style={styles.container}>
-      <ImageBackground 
+      <ImageBackground
         source={require('../../assets/startup_screen.png')}
         style={styles.backgroundImage}
         resizeMode="cover"
       >
         {visible ? (
-          <ImageBackground 
+          <ImageBackground
             source={require('../../assets/background_image.png')}
             style={styles.logo}
             resizeMode="cover"
-
           />
         ) : (
           <View style={styles.loginContainer}>
@@ -50,8 +53,12 @@ const Portada = () => {
               secureTextEntry
               autoCapitalize="none"
             />
-            <TouchableOpacity style={styles.button}>
+              <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Menu')}>
               <Text style={styles.buttonText}>Acceder</Text>
+            </TouchableOpacity>
+            
+            <TouchableOpacity onPress={() => navigation.navigate('Registro')}>
+              <Text style={styles.registerText}>¿Eres nuevo? Regístrate aquí</Text>
             </TouchableOpacity>
           </View>
         )}
@@ -108,6 +115,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  registerText: {
+    color: 'white',
+    fontSize: 16,
+    marginTop: 20,
+    textAlign: 'center',
+    textDecorationLine: 'underline',
   },
 });
 
