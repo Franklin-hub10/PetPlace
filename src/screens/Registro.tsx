@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Alert, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { styles } from '../appTheme/AppTheme';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -7,6 +7,19 @@ import { RootStackParams } from '../navigator/StackNavigator';
 
 
 
+interface Props {
+  placeholder: string;
+  handleSetValues: (name: string, value: string) => void;   //prop función
+  name: string;
+  isPassword?: boolean;  //prop opcional
+  hasIcon?: boolean;
+  actionIcon?: () => void;  //prop función
+}
+
+
+
+const navigation = useNavigation<NavigationProp<RootStackParams>>(); 
+
 const Registro = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,8 +27,17 @@ const Registro = () => {
   const [numeroCelular, setNumeroCelular] = useState('');
   // Función para manejar el registro y guardar los datos
 
+  //borrar el contenido de la contrase;a y el email
+  useEffect(() => {
+    setEmail('');
+    setPassword('');
+    setNombres ('');
+    setNumeroCelular ('');
+  }, [navigation]);
 
-  const navigation = useNavigation<NavigationProp<RootStackParams>>();
+
+
+
 
   const handleRegister = async () => {
     if (!email || !password || !nombres || !numeroCelular) {
@@ -31,10 +53,10 @@ const Registro = () => {
     };
 
     try {
-      // Convertir los datos a JSON y almacenarlos en AsyncStorage
+    
       await AsyncStorage.setItem('userData', JSON.stringify(userData));
       
-      // Confirmación de éxito
+
       Alert.alert('Registro Exitoso', `Bienvenido, ${nombres}`);
       console.log(userData)
       console.log('Navegando a Portada'); 

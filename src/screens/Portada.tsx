@@ -4,8 +4,25 @@ import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { RootStackParams } from '../navigator/StackNavigator';
 import { styles } from '../appTheme/AppTheme';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const Portada = () => {
+
+interface Props {
+  handleSetValues: (name: string, value: string) => void;   //prop función
+  name: string;
+  isPassword?: boolean;  //prop opcional
+  hasIcon?: boolean;
+  actionIcon?: () => void;  //prop función
+}
+interface FormLogin {
+  email: string;
+  password: string;
+}
+
+
+const Portada = ( actionIcon : Props) => {
+
+
   const [visible, setVisible] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -23,13 +40,13 @@ const Portada = () => {
 
   const handleLogin = async () => {
     try {
-      // Recuperar los datos almacenados en AsyncStorage
+      // validar el dato  guardado 
       const storedUserData = await AsyncStorage.getItem('userData');
 
       if (storedUserData) {
         const userData = JSON.parse(storedUserData);
 
-        // Validar las credenciales
+        //comparar el correo y la contrase;a
         if (userData.email === email && userData.password === password) {
           Alert.alert('Acceso exitoso', 'Bienvenido!');
           // Navegar a la pantalla del menú
@@ -45,6 +62,26 @@ const Portada = () => {
       Alert.alert('Error', 'Hubo un problema al verificar los datos');
     }
   };
+
+
+//borrar el contenido de la contrase;a y el email
+  useEffect(() => {
+    setEmail('');
+    setPassword('');
+  }, [navigation]);
+
+
+  //hook useState: permitir que la contraseña sea visible o no
+  const [hiddenPassword, setHiddenPassword] = useState<boolean>(true);
+
+
+
+  //hook useState: manipular el estado del formulario
+  const [formLogin, setFormLogin] = useState<FormLogin>({
+  email: '',
+   password: ''
+  });
+
 
   return (
     <View style={styles.container}>
@@ -70,7 +107,9 @@ const Portada = () => {
               value={email}
               keyboardType="email-address"
               autoCapitalize="none"
+            
             />
+            <View  style={styles.passwordContainer}  >
             <TextInput
               style={styles.input}
               placeholder="Contraseña"
@@ -79,7 +118,15 @@ const Portada = () => {
               value={password}
               secureTextEntry
               autoCapitalize="none"
+        
             />
+            <Icon
+             name='visibility'
+             size={25}
+             onPress={actionIcon}
+             styles={styles.IconoPosision}
+             />
+             </View>
             <TouchableOpacity style={styles.button} onPress={handleLogin}>
               <Text style={styles.buttonText}>Acceder</Text>
             </TouchableOpacity>

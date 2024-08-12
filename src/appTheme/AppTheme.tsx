@@ -102,4 +102,23 @@ export const styles = StyleSheet.create({
           width: '100%',
           height: '100%',
         },
+
+
+        //iconos
+
+        IconoPosision:{
+          position: 'absolute',
+          left:10,
+          zIndex:1,
+          justifyContent:'center',
+          color:'white',
+          paddingRight: 40,
+
+        },
+        passwordContainer: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          borderColor: '#aaa',
+
+        },
       });
