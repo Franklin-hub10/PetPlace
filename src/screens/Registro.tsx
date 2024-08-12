@@ -1,23 +1,61 @@
 import React, { useState } from 'react';
-import { ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import Portada from './Portada';
+import { Alert, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { styles } from '../appTheme/AppTheme';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { RootStackParams } from '../navigator/StackNavigator';
+
+
 
 const Registro = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [nombres, setNombres] = useState('');
   const [numeroCelular, setNumeroCelular] = useState('');
- 
+  // Función para manejar el registro y guardar los datos
+
+
+  const navigation = useNavigation<NavigationProp<RootStackParams>>();
+
+  const handleRegister = async () => {
+    if (!email || !password || !nombres || !numeroCelular) {
+      Alert.alert('Error', 'Todos los campos son obligatorios');
+      return;
+    }
+
+    const userData = {
+      email,
+      password,
+      nombres,
+      numeroCelular,
+    };
+
+    try {
+      // Convertir los datos a JSON y almacenarlos en AsyncStorage
+      await AsyncStorage.setItem('userData', JSON.stringify(userData));
+      
+      // Confirmación de éxito
+      Alert.alert('Registro Exitoso', `Bienvenido, ${nombres}`);
+      console.log(userData)
+      console.log('Navegando a Portada'); 
+      navigation.navigate('Inicio');
+
+    } catch (error) {
+      Alert.alert('Error', 'Hubo un problema al guardar los datos');
+      console.error(error);
+    }
+  };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.containerRegistro}>
             <ImageBackground
         source={require('../../assets/icon_192.png')}
-        style={styles.backgroundImage}
+        style={styles.backgroundImageRegistro}
        // resizeMode="cover"
       ></ImageBackground>
-      <Text style={styles.title}>Registro</Text>
+      <Text style={styles.titleRegistro}>Registro</Text>
 
+  
       <TextInput
         style={styles.input}
         placeholder="Nombres y apellidos"
@@ -52,55 +90,14 @@ const Registro = () => {
         secureTextEntry
         autoCapitalize="none"
       />
-      <TouchableOpacity style={styles.button} onPress={Portada}>
-        <Text style={styles.buttonText}>Registrarse</Text>
+      <TouchableOpacity style={styles.buttonRegistro} onPress={handleRegister}>
+        <Text style={styles.buttonTextRegistro}>Registrarse</Text>
       </TouchableOpacity>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
-  },
-  title: {
-    color: '#333',
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    textAlign: 'center',
-  },
-  input: {
-    height: 50,
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-    borderRadius: 10,
-    paddingHorizontal: 10,
-    marginBottom: 20,
-    width: '100%',
-    color: '#000',
-  },
-  button: {
-    backgroundColor: '#ff6347',
-    paddingVertical: 15,
-    borderRadius: 10,
-    width: '100%',
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  backgroundImage: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: '100%',
-  },
-});
+ 
+
 
 export default Registro;

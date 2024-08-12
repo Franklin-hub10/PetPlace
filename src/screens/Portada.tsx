@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
-import { Parametro } from '../navigator/StackNavigator';
+import { RootStackParams } from '../navigator/StackNavigator';
+import { styles } from '../appTheme/AppTheme';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Portada = () => {
   const [visible, setVisible] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const navigation = useNavigation<NavigationProp<Parametro>>();
+  const navigation = useNavigation<NavigationProp<RootStackParams>>();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -18,6 +20,31 @@ const Portada = () => {
     // Limpia el temporizador 
     return () => clearTimeout(timer);
   }, []);
+
+  const handleLogin = async () => {
+    try {
+      // Recuperar los datos almacenados en AsyncStorage
+      const storedUserData = await AsyncStorage.getItem('userData');
+
+      if (storedUserData) {
+        const userData = JSON.parse(storedUserData);
+
+        // Validar las credenciales
+        if (userData.email === email && userData.password === password) {
+          Alert.alert('Acceso exitoso', 'Bienvenido!');
+          // Navegar a la pantalla del menú
+          navigation.navigate('Menu');
+        } else {
+          Alert.alert('Error', 'Correo o contraseña incorrectos');
+        }
+      } else {
+        Alert.alert('Error', 'No se encontraron datos de usuario');
+      }
+    } catch (error) {
+      console.error(error);
+      Alert.alert('Error', 'Hubo un problema al verificar los datos');
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -53,10 +80,10 @@ const Portada = () => {
               secureTextEntry
               autoCapitalize="none"
             />
-              <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Menu')}>
+            <TouchableOpacity style={styles.button} onPress={handleLogin}>
               <Text style={styles.buttonText}>Acceder</Text>
             </TouchableOpacity>
-            
+
             <TouchableOpacity onPress={() => navigation.navigate('Registro')}>
               <Text style={styles.registerText}>¿Eres nuevo? Regístrate aquí</Text>
             </TouchableOpacity>
@@ -67,62 +94,6 @@ const Portada = () => {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  backgroundImage: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: '100%',
-  },
-  logo: {
-    width: '100%',
-    height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  loginContainer: {
-    width: '80%',
-    padding: 20,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    borderRadius: 10,
-  },
-  title: {
-    color: 'white',
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    textAlign: 'center',
-  },
-  input: {
-    height: 50,
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-    borderRadius: 10,
-    paddingHorizontal: 10,
-    marginBottom: 20,
-    color: '#000',
-  },
-  button: {
-    backgroundColor: '#ff6347',
-    paddingVertical: 15,
-    borderRadius: 10,
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  registerText: {
-    color: 'white',
-    fontSize: 16,
-    marginTop: 20,
-    textAlign: 'center',
-    textDecorationLine: 'underline',
-  },
-});
+
 
 export default Portada;
