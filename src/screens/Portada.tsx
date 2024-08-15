@@ -6,7 +6,7 @@ import { styles } from '../appTheme/AppTheme';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-
+//nue
 interface Props {
   handleSetValues: (name: string, value: string) => void;   //prop función
   name: string;
