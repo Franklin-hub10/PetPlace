@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, Image, Modal, Text, TouchableOpacity, useWindowDimensions, View } from 'react-native';
+import { Alert, FlatList, Image, Modal, Text, TouchableOpacity, useWindowDimensions, View } from 'react-native';
 import { Car } from '../Menu';
 import { styles } from '../../appTheme/AppTheme';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -11,10 +11,10 @@ interface Props {
     isVisible: boolean;
     setShowModal: () => void; //función para cerrar el modal
     car: Car[];  //arreglo con la lista de productos en el carrito
-
+    setCar: () => void;
 }
 
-export const ModalCar = ({ isVisible, setShowModal, car }: Props) => {
+export const ModalCar = ({ isVisible, setShowModal, car,setCar }: Props) => {
 
     const { width } = useWindowDimensions();
 
@@ -30,9 +30,10 @@ export const ModalCar = ({ isVisible, setShowModal, car }: Props) => {
 
     //función enviar la compra
     const handleSendInfo = () => {
-
+Alert.alert(  "Gracias por tu compra",
+    "Tu producto llegará pronto.")
         //vaciar el carrito
-      
+        setCar();
         //Cerrar el modal
         setShowModal();
     }

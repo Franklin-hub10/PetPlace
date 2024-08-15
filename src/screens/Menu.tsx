@@ -140,7 +140,7 @@ if (existingProductIndex >= 0) {
         isVisible={showModal}
         car={car}
         setShowModal={() => setShowModal(!showModal)}
-        
+        setCar={() => setCar([])}
         />
     </View>
 
