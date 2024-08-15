@@ -1,62 +1,102 @@
 import React from 'react';
-import { Modal, Text, View } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
-import { Car } from '../HomeScreen';
-import { styles } from '../../../theme/appTheme';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { FlatList, Modal, Text, TouchableOpacity, useWindowDimensions, View } from 'react-native';
+import { Car } from '../Menu';
+import { styles } from '../../appTheme/AppTheme';
+import { Icon } from 'react-native-vector-icons/Icon';
 
+
+//interface - props
 interface Props {
     isVisible: boolean;
-    setShowModal: () => void;
-    cars: Car[];
+    setShowModal: () => void; //función para cerrar el modal
+    car: Car[];  //arreglo con la lista de productos en el carrito
 }
 
-export const ModalCard = ({ isVisible, setShowModal, cars }: Props) => {
+export const ModalCar = ({ isVisible, setShowModal, car }: Props) => {
 
-    // Función para calcular el total a pagar
+    const { width } = useWindowDimensions();
+
+    //función para calcular el total a pagar
     const totalPay = (): number => {
-        return cars.reduce((acc, product) => acc + product.price * product.quantity, 0);
+        //acumulador
+        let total: number = 0;
+        car.forEach(product => {
+            total += product.price * product.totalQuantity
+        });
+        return total;
+    }
+
+    //función enviar la compra
+    const handleSendInfo = () => {
+        //Cerrar el modal
+        setShowModal();
     }
 
     return (
-        <Modal
-            visible={isVisible}
-            transparent={true}
-            animationType='fade'
-        >
-            <View style={styles.modalContainer}>
-                <View style={styles.modalContent}>
-                    <Text style={styles.modalTitle}>Mis Productos</Text>
-                
+        <Modal visible={isVisible} transparent={true} animationType='fade'>
+            <View style={styles.contentPrincipal}>
+                <View style={{
+                    ...styles.contentModal,
+                    width: width * 0.80
+                }}>
+                    <View style={styles.headerModal}>
+                        <Text style={styles.titleModal}>Mis Productos</Text>
+                        <View style={styles.iconCard}>
+                            <Icon
+                                name='cancel'
+                                size={27}
+                                color={'blue'}
+                                onPress={setShowModal} />
+                        </View>
+                    </View>
+                    <View style={styles.headerTable}>
+                        <Text style={styles.textHeaderInf}>Producto</Text>
+                        <View style={styles.headerTableInf}>
+                            <Text style={{
+                                ...styles.textHeaderInf,
+                                marginHorizontal: 10
+                            }}>Prec.</Text>
+                            <Text style={{
+                                ...styles.textHeaderInf,
+                                marginHorizontal: 10
+                            }}>Cant.</Text>
+                            <Text style={{
+                                ...styles.textHeaderInf,
+                                marginHorizontal: 10
+                            }}>Total</Text>
+                        </View>
+                    </View>
                     <FlatList
-                        data={cars}
-                        renderItem={({ item }) => (
+                        data={car}
+                        renderItem={({ item }) =>
                             <View style={styles.headerTable}>
-                                <Text style={styles.headerTableText}>{item.name}</Text>
+                                <Text>{item.name}</Text>
                                 <View style={styles.headerTableInf}>
-                                    <View style={styles.cellContainer}>
-                                        <Text style={styles.cellText}>{item.price.toFixed(2)}</Text>
-                                        <Text style={styles.cellLabel}>Precio</Text>
-                                    </View>
-                                    <View style={styles.cellContainer}>
-                                        <Text style={styles.cellText}>{item.quantity}</Text>
-                                        <Text style={styles.cellLabel}>Cant.</Text>
-                                    </View>
-                                    <View style={styles.cellContainer}>
-                                        <Text style={styles.cellText}>{(item.price * item.quantity).toFixed(2)}</Text>
-                                        <Text style={styles.cellLabel}>Total</Text>
-                                    </View>
+                                    <Text style={{ marginHorizontal: 10 }}>
+                                        {item.price.toFixed(2)}
+                                    </Text>
+                                    <Text style={{ paddingHorizontal: 27 }}>
+                                        {item.totalQuantity}
+                                    </Text>
+                                    <Text style={{ marginHorizontal: 10 }}>
+                                        {(item.price * item.totalQuantity).toFixed(2)}
+                                    </Text>
                                 </View>
                             </View>
-                        )}
-                        keyExtractor={item => item.id.toString()}
-                    />
-                    <Text style={styles.totalText}>Total a Pagar: ${totalPay().toFixed(2)}</Text>
-                    <Text style={styles.modalCloseText} onPress={setShowModal}>Cerrar</Text>
+                        }
+                        keyExtractor={item => item.id.toString()} />
+                    <View style={{ alignItems: 'flex-end' }}>
+                        <Text style={styles.textTotalPay}>
+                            Total pagar: ${totalPay().toFixed(2)}
+                        </Text>
+                    </View>
+                    <TouchableOpacity
+                        onPress={handleSendInfo}
+                        style={styles.buttonAddCard}>
+                        <Text style={styles.textButtonAddCard}>Comprar</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         </Modal>
-    );
+    )
 }
-
-

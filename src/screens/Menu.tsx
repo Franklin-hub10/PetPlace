@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
-import { ImageBackground, StyleSheet, View } from 'react-native';
+import { FlatList, ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { ModalCar } from './MenuComponentes/ModalCard';
+import { CardProduct } from './MenuComponentes/CardProduct';
+import { Icon } from 'react-native-vector-icons/Icon';
+import { TitleComponent } from '../componentReutilizables/TitleComponent';
+import { BodyComponent } from '../componentReutilizables/BodyComponent';
 
 export interface Product {
   id: number;
@@ -7,6 +12,14 @@ export interface Product {
   price: number;
   stock: number;
   pathImage: string;
+}
+
+
+export interface Car {
+  id: number;
+  name: string;
+  price: number;
+  totalQuantity: number;
 }
 
 const products: Product[] = [
@@ -19,56 +32,52 @@ const products: Product[] = [
   { id: 7, name: 'Funda de sal', price: 0.65, stock: 15, pathImage: '' },
 ];
 
-export interface Car {
-  id: number;
-  name: string;
-  price: number;
-  quantity: number;
-}
+
 
 export const Menu = () => {
-  // Hook para actualizar el estado de los productos
+  //hook useState: manipular el arreglo de productos
   const [productsState, setProductsState] = useState(products);
-  // Hook para capturar la lista de productos seleccionados
-  const [cars, setCars] = useState<Car[]>([]);
-  // Hook para gestionar el modal del carrito
-  const [showModal, setShowModal] = useState(false);
 
-  // Función para controlar el stock
-  const handlerChangeStockProduct = (idProducto: number, quantity: number) => {
-    const updateStock = productsState.map(item => 
-      item.id === idProducto
-        ? {
-            ...item,
-            stock: item.stock - quantity,
-          }
-        : item
-    );
+  //hook useState: manipular el arreglo de carrito de compras
+  const [car, setCar] = useState<Car[]>([]);
+
+  //hook useState: manipular la visibilidad del modal
+  const [showModal, setShowModal] = useState<boolean>(false);
+
+  //función para actualizar la información del arreglo producto
+  const changeStockProduct = (idProduct: number, quantity: number) => {
+    //Nuevo arreglo con el stock actualizado
+    const updateStock = productsState.map(product => product.id === idProduct
+      ? { ...product, stock: product.stock - quantity }
+      : product);
+    //Actualizar productState
     setProductsState(updateStock);
-    // Llamar a la función añadir carrito
-    addProduct(idProducto, quantity);
-  };
 
-  // Función para agregar en el carrito de compras
+    //llamar función agregar carrito
+    addProduct(idProduct, quantity);
+  }
+
+  //función agregar los productos al carrito
   const addProduct = (idProduct: number, quantity: number) => {
-    const product = productsState.find(item => item.id === idProduct);
+    const product = productsState.find(product => product.id === idProduct);
 
-    // Si no existe el producto
+    //Controlar si el producto no ha sido encontrado
     if (!product) {
       return;
     }
 
-    // Si existe el producto
-    const newCar: Car = {
+    //Si el producto fue encontrado - genero objeto car|producto
+    const newProductCar: Car = {
       id: product.id,
       name: product.name,
       price: product.price,
-      quantity: quantity,
-    };
-    // Añadir al carrito
-    setCars(prevCars => [...prevCars, newCar]);
-  };
+      totalQuantity: quantity
+    }
 
+    //Agregar en el arreglo del carrito de compras
+    setCar([...car, newProductCar]);
+    //console.log(car);
+  }
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -76,7 +85,33 @@ export const Menu = () => {
         style={styles.backgroundImage}
         resizeMode="cover"
       />
-    </View>
+
+
+        <View >
+          <TitleComponent title='Productos' />
+          <View >
+            <Text>{car.length}</Text>
+            <Icon
+              name='shopping-cart'
+              size={33}
+              color={'blue'}
+              onPress={() => setShowModal(!showModal)} />
+          </View>
+        </View>
+        <BodyComponent>
+          <FlatList
+            data={productsState}
+            renderItem={({ item }) => <CardProduct product={item} changeStockProduct={changeStockProduct} />}
+            keyExtractor={item => item.id.toString()} />
+        </BodyComponent>
+        <ModalCar
+          isVisible={showModal}
+          car={car}
+          setShowModal={() => setShowModal(!showModal)} />
+      </View>
+
+
+
   );
 };
 
@@ -93,6 +128,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
- 
+
 });
 

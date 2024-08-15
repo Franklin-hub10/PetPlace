@@ -1,48 +1,48 @@
 import React, { useState } from 'react';
 import { Image, Text, View } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import { Product } from '../HomeScreen';
-import { styles } from '../../../theme/appTheme';
-import { PRIMARY_COLOR } from '../../../commons/constantsColor';
-import { ModalProducto } from './ModalProducto';
+import { Product } from '../Menu';
+import { styles } from '../../appTheme/AppTheme';
+import { Icon } from 'react-native-vector-icons/Icon';
+import { ModalProduct } from './ModalProducto';
 
+
+
+//interface - Props
 interface Props {
   product: Product;
-  handlerChangeStockProduct: (idProduct: number, quantity: number) => void;
+  changeStockProduct: (idProduct: number, quantity: number) => void;
 }
 
-const CardProduct = ({ product, handlerChangeStockProduct }: Props) => {
+export const CardProduct = ({ product, changeStockProduct }: Props) => {
+  //hook useState: manipular el estado del modal
   const [showModal, setShowModal] = useState<boolean>(false);
 
   return (
     <View>
       <View style={styles.contentCard}>
         <Image
-          source={{ uri: product.pathImage }}
-          style={styles.imagenCard}
-        />
-        <View style={styles.textContainer}>
-          <Text style={styles.titleCard}>{product.name}</Text>
-          <Text style={styles.priceCard}>${product.price.toFixed(2)}</Text>
-        </View>
+          source={{
+            uri: product.pathImage
+          }}
+          style={styles.imageCard} />
         <View>
+          <Text style={styles.titleCard}>{product.name}</Text>
+          <Text>Precio: ${product.price.toFixed(2)}</Text>
+        </View>
+        <View style={styles.iconCard}>
           <Icon
-            name="shopping-cart-checkout"
-            size={40}
-            color={PRIMARY_COLOR}
-            onPress={() => setShowModal(!showModal)}
-          />
+            name='add-shopping-cart'
+            size={33}
+            color={'blue'}
+            onPress={() => setShowModal(!showModal)} />
         </View>
       </View>
-      <ModalProducto
-        product={product}
+      <ModalProduct
         isVisible={showModal}
         setShowModal={() => setShowModal(!showModal)}
-        changeStockProduct={handlerChangeStockProduct} // Añadir esta línea
-      />
+        product={product}
+        changeStockProduct={changeStockProduct} />
     </View>
-  );
+
+  )
 }
-
-export default CardProduct;
-
