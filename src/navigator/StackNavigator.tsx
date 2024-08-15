@@ -16,8 +16,8 @@ const Stack = createStackNavigator<RootStackParams>();
 
 const StackNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="Inicio" >
-      <Stack.Screen name="Inicio" component={Portada}  />
+    <Stack.Navigator initialRouteName="Inicio">
+      <Stack.Screen name="Inicio" component={Portada} />
       <Stack.Screen name="Registro" component={Registro} />
       <Stack.Screen name="Menu" component={Menu} />
     </Stack.Navigator>
