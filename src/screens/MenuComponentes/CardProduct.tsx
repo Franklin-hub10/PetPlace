@@ -2,29 +2,25 @@ import React, { useState } from 'react';
 import { Image, Text, View } from 'react-native';
 import { Product } from '../Menu';
 import { styles } from '../../appTheme/AppTheme';
-import { Icon } from 'react-native-vector-icons/Icon';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import { ModalProduct } from './ModalProducto';
 
-
-
-//interface - Props
 interface Props {
   product: Product;
   changeStockProduct: (idProduct: number, quantity: number) => void;
 }
 
 export const CardProduct = ({ product, changeStockProduct }: Props) => {
-  //hook useState: manipular el estado del modal
   const [showModal, setShowModal] = useState<boolean>(false);
 
   return (
     <View>
       <View style={styles.contentCard}>
         <Image
-          source={{
-            uri: product.pathImage
-          }}
-          style={styles.imageCard} />
+          source={{ uri: product.pathImage || 'https://via.placeholder.com/150' }}
+          style={styles.imageCard}
+          resizeMode="contain"
+        />
         <View>
           <Text style={styles.titleCard}>{product.name}</Text>
           <Text>Precio: ${product.price.toFixed(2)}</Text>
@@ -34,15 +30,16 @@ export const CardProduct = ({ product, changeStockProduct }: Props) => {
             name='add-shopping-cart'
             size={33}
             color={'blue'}
-            onPress={() => setShowModal(!showModal)} />
+            onPress={() => setShowModal(!showModal)}
+          />
         </View>
       </View>
       <ModalProduct
         isVisible={showModal}
         setShowModal={() => setShowModal(!showModal)}
         product={product}
-        changeStockProduct={changeStockProduct} />
+        changeStockProduct={changeStockProduct}
+      />
     </View>
-
-  )
+  );
 }

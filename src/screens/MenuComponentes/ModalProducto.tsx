@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import { Image, Modal, Text, TouchableOpacity, useWindowDimensions, View } from 'react-native';
 import { Product } from '../Menu';
 import { styles } from '../../appTheme/AppTheme';
-import { Icon } from 'react-native-vector-icons/Icon';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+ 
 
 
  

@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { FlatList, ImageBackground, StyleSheet, Text, View } from 'react-native';
 import { ModalCar } from './MenuComponentes/ModalCard';
 import { CardProduct } from './MenuComponentes/CardProduct';
-import { Icon } from 'react-native-vector-icons/Icon';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+ 
 import { TitleComponent } from '../componentReutilizables/TitleComponent';
 import { BodyComponent } from '../componentReutilizables/BodyComponent';
+import { styles } from '../appTheme/AppTheme';
 
 export interface Product {
   id: number;
@@ -23,13 +25,13 @@ export interface Car {
 }
 
 const products: Product[] = [
-  { id: 1, name: 'Funda de arroz', price: 0.90, stock: 10, pathImage: 'assets/icon_72.png' },
-  { id: 2, name: 'Funda de azucar', price: 1.10, stock: 0, pathImage: '' },
-  { id: 3, name: 'Funda de papas', price: 2.50, stock: 3, pathImage: '' },
-  { id: 4, name: 'Funda de fideos', price: 1.00, stock: 4, pathImage: '' },
-  { id: 5, name: 'Funda de sal', price: 0.65, stock: 15, pathImage: '' },
-  { id: 6, name: 'Funda de sal', price: 0.65, stock: 15, pathImage: '' },
-  { id: 7, name: 'Funda de sal', price: 0.65, stock: 15, pathImage: '' },
+  { id: 1, name: 'Pilsener', price: 0.90, stock: 50, pathImage: 'https://www.megaprimavera.com/wp-content/uploads/arroz-blanco-gustadina-2-kg.png' },
+  { id: 2, name: 'Club', price: 1.10, stock: 0, pathImage:'https://www.megaprimavera.com/wp-content/uploads/arroz-blanco-gustadina-2-kg.png' },
+  { id: 3, name: 'Club SixPack', price: 2.50, stock: 5, pathImage: 'https://www.megaprimavera.com/wp-content/uploads/arroz-blanco-gustadina-2-kg.png' },
+  { id: 4, name: 'Funda de fideos', price: 1.00, stock: 18, pathImage: 'https://www.megaprimavera.com/wp-content/uploads/arroz-blanco-gustadina-2-kg.png' },
+  { id: 5, name: 'Funda de sal', price: 0.65, stock: 15, pathImage: 'https://www.megaprimavera.com/wp-content/uploads/arroz-blanco-gustadina-2-kg.png' },
+  { id: 6, name: 'Funda de sal', price: 0.65, stock: 15, pathImage: 'https://catu.ec/wp-content/uploads/2022/03/Cerveza-Corona-Extra-355ml-Modelo.jpg' },
+  { id: 7, name: 'Funda de sal', price: 0.65, stock: 15, pathImage: 'https://catu.ec/wp-content/uploads/2022/03/Cerveza-Corona-Extra-355ml-Modelo.jpg' },
 ];
 
 
@@ -79,19 +81,18 @@ export const Menu = () => {
     //console.log(car);
   }
   return (
-    <View style={styles.container}>
+    <View style={styles.containerMenu}>
       <ImageBackground
         source={require('../../assets/startup_screen.png')}
-        style={styles.backgroundImage}
+        style={styles.backgroundImageMenu}
         resizeMode="cover"
+        
       />
-
-
-        <View >
+        <View style={styles.containerMenuF}>
           <TitleComponent title='Productos' />
           <View >
             <Text>{car.length}</Text>
-            <Icon
+            <Icon style= {styles.posicionF}
               name='shopping-cart'
               size={33}
               color={'blue'}
@@ -116,18 +117,4 @@ export const Menu = () => {
 };
 
 
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  backgroundImage: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: '100%',
-  },
-
-});
 

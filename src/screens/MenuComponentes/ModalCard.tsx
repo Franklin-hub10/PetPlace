@@ -2,7 +2,8 @@ import React from 'react';
 import { FlatList, Modal, Text, TouchableOpacity, useWindowDimensions, View } from 'react-native';
 import { Car } from '../Menu';
 import { styles } from '../../appTheme/AppTheme';
-import { Icon } from 'react-native-vector-icons/Icon';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+ 
 
 
 //interface - props
