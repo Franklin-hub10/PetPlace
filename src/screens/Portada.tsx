@@ -6,10 +6,10 @@ import { styles } from '../appTheme/AppTheme';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-//nue
+//nue 
 interface Props {
-  handleSetValues: (name: string, value: string) => void;   //prop función
-  name: string;
+  handleSetValues?: (name: string, value: string) => void;   //prop función
+  name?: string;
   isPassword?: boolean;  //prop opcional
   hasIcon?: boolean;
   actionIcon?: () => void;  //prop función
@@ -20,7 +20,7 @@ interface FormLogin {
 }
 
 
-const Portada = ( actionIcon : Props) => {
+const Portada = ( {actionIcon, handleSetValues} : Props) => {
 
 
   const [visible, setVisible] = useState(true);
@@ -82,6 +82,10 @@ const Portada = ( actionIcon : Props) => {
    password: ''
   });
 
+  //cambiar a visible la contrase;a y visceversa 
+  const cambiarVistaPassword = () => {
+    setHiddenPassword(!hiddenPassword);
+  };
 
   return (
     <View style={styles.container}>
@@ -109,24 +113,24 @@ const Portada = ( actionIcon : Props) => {
               autoCapitalize="none"
             
             />
-            <View  style={styles.passwordContainer}  >
-            <TextInput
-              style={styles.input}
-              placeholder="Contraseña"
-              placeholderTextColor="#aaa"
-              onChangeText={setPassword}
-              value={password}
-              secureTextEntry
-              autoCapitalize="none"
-        
-            />
-            <Icon
-             name='visibility'
-             size={25}
-             onPress={actionIcon}
-             styles={styles.IconoPosision}
-             />
-             </View>
+            <View style={styles.passwordContainer}>
+              <TextInput
+                style={[styles.input, { flex: 1 }]} // Ocupa todo el espacio disponible
+                placeholder="Contraseña"
+                placeholderTextColor="#aaa"
+                onChangeText={setPassword}
+                value={password}
+                secureTextEntry={hiddenPassword}
+                autoCapitalize="none"
+              />
+              <TouchableOpacity onPress={cambiarVistaPassword}>
+                <Icon
+                  name={hiddenPassword ? 'visibility-off' : 'visibility'}
+                  size={25}
+                  style={styles.IconoPosision}
+                />
+              </TouchableOpacity>
+            </View>
             <TouchableOpacity style={styles.button} onPress={handleLogin}>
               <Text style={styles.buttonText}>Acceder</Text>
             </TouchableOpacity>

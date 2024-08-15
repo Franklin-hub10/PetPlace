@@ -33,7 +33,7 @@ export const styles = StyleSheet.create({
           marginBottom: 20,
           textAlign: 'center',
         },
-        input: {
+        input1: {
           height: 50,
           backgroundColor: 'rgba(255, 255, 255, 0.8)',
           borderRadius: 10,
@@ -106,19 +106,25 @@ export const styles = StyleSheet.create({
 
         //iconos
 
-        IconoPosision:{
-          position: 'absolute',
-          left:10,
-          zIndex:1,
-          justifyContent:'center',
-          color:'white',
-          paddingRight: 40,
+     
+          passwordContainer: {
+            flexDirection: 'row',   // Alinea el TextInput y el Icon horizontalmente
+            alignItems: 'center',   // Alinea el contenido verticalmente al centro
+            borderColor: '#aaa',
+           
+           // paddingRight: 10,       // Espacio para que el ícono no esté pegado al borde
+        
+          },
+        
+          IconoPosision: {
+            position: 'absolute',
+            right: 10,              // Coloca el ícono 10 unidades desde la derecha
+            justifyContent: 'center',
+            color: '#000', 
+            bottom:0.1
 
-        },
-        passwordContainer: {
-          flexDirection: 'row',
-          alignItems: 'center',
-          borderColor: '#aaa',
+           // marginBottom:20       
+          },
 
-        },
+  
       });

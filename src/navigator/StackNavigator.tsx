@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Portada from '../screens/Portada';
 import Registro from '../screens/Registro';
 import { Menu } from '../screens/Menu';
-import { StyleSheet } from 'react-native';
+
 
 export interface RootStackParams {
   Inicio: undefined;
@@ -26,16 +26,6 @@ const StackNavigator = () => {
 
 export default StackNavigator;
 
-const styles = StyleSheet.create({
-  
-  backgroundImage: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: '100%',
-  },
- 
-});
+
 
 

@@ -18,9 +18,10 @@ interface Props {
 
 
 
-const navigation = useNavigation<NavigationProp<RootStackParams>>(); 
+
 
 const Registro = () => {
+  const navigation = useNavigation<NavigationProp<RootStackParams>>(); 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [nombres, setNombres] = useState('');
