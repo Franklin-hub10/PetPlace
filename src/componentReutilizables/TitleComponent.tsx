@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, useWindowDimensions } from 'react-native';
+import { ImageBackground, Text, useWindowDimensions } from 'react-native';
 import { styles } from '../appTheme/AppTheme';
 
  
@@ -15,6 +15,9 @@ export const TitleComponent = ({ title }: Props) => {
             ...styles.globalTitle,
             height:height*0.12
             }}>
+
+        
+
             {title}
 </Text>
     )

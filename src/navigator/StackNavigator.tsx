@@ -16,7 +16,17 @@ const Stack = createStackNavigator<RootStackParams>();
 
 const StackNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="Inicio">
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false, //ocultar cabecera de navegacion
+        headerStyle: {
+          elevation: 1
+        },
+        //cardStyle: {
+          //backgroundColor: 'white'
+       // }
+      }}
+    >
       <Stack.Screen name="Inicio" component={Portada} />
       <Stack.Screen name="Registro" component={Registro} />
       <Stack.Screen name="Menu" component={Menu} />

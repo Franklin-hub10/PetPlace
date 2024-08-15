@@ -1,9 +1,9 @@
 import React from 'react';
-import { FlatList, Modal, Text, TouchableOpacity, useWindowDimensions, View } from 'react-native';
+import { FlatList, Image, Modal, Text, TouchableOpacity, useWindowDimensions, View } from 'react-native';
 import { Car } from '../Menu';
 import { styles } from '../../appTheme/AppTheme';
 import Icon from 'react-native-vector-icons/MaterialIcons';
- 
+
 
 
 //interface - props
@@ -11,6 +11,7 @@ interface Props {
     isVisible: boolean;
     setShowModal: () => void; //función para cerrar el modal
     car: Car[];  //arreglo con la lista de productos en el carrito
+
 }
 
 export const ModalCar = ({ isVisible, setShowModal, car }: Props) => {
@@ -29,24 +30,27 @@ export const ModalCar = ({ isVisible, setShowModal, car }: Props) => {
 
     //función enviar la compra
     const handleSendInfo = () => {
+
+        //vaciar el carrito
+      
         //Cerrar el modal
         setShowModal();
     }
 
     return (
         <Modal visible={isVisible} transparent={true} animationType='fade'>
-            <View style={styles.contentPrincipal}>
+            <View style={styles.contentPrincipalP}>
                 <View style={{
                     ...styles.contentModal,
                     width: width * 0.80
                 }}>
-                    <View style={styles.headerModal}>
+                    <View style={styles.headerModalP}>
                         <Text style={styles.titleModal}>Mis Productos</Text>
                         <View style={styles.iconCard}>
                             <Icon
                                 name='cancel'
                                 size={27}
-                                color={'blue'}
+                                color={'#FB6F0F'}
                                 onPress={setShowModal} />
                         </View>
                     </View>
@@ -55,37 +59,45 @@ export const ModalCar = ({ isVisible, setShowModal, car }: Props) => {
                         <View style={styles.headerTableInf}>
                             <Text style={{
                                 ...styles.textHeaderInf,
-                                marginHorizontal: 10
+                                marginHorizontal: 10,
+                                left: 25,
                             }}>Prec.</Text>
                             <Text style={{
                                 ...styles.textHeaderInf,
-                                marginHorizontal: 10
+                                marginHorizontal: 10,
+                                left: 10,
                             }}>Cant.</Text>
                             <Text style={{
                                 ...styles.textHeaderInf,
-                                marginHorizontal: 10
+                                marginHorizontal: 10,
+
                             }}>Total</Text>
                         </View>
                     </View>
                     <FlatList
                         data={car}
                         renderItem={({ item }) =>
-                            <View style={styles.headerTable}>
-                                <Text>{item.name}</Text>
+                            <View style={styles.itemContainer}>
+                                <Image
+                                    source={{ uri: item.pathImage }}
+                                    style={styles.imageItem}
+                                />
+                                <Text style={styles.itemText}>{item.name}</Text>
                                 <View style={styles.headerTableInf}>
-                                    <Text style={{ marginHorizontal: 10 }}>
-                                        {item.price.toFixed(2)}
+                                    <Text style={styles.itemText}>
+                                        $ {item.price.toFixed(2)}
                                     </Text>
-                                    <Text style={{ paddingHorizontal: 27 }}>
+                                    <Text style={styles.itemText}>
                                         {item.totalQuantity}
                                     </Text>
-                                    <Text style={{ marginHorizontal: 10 }}>
+                                    <Text style={styles.itemText}>$
                                         {(item.price * item.totalQuantity).toFixed(2)}
                                     </Text>
                                 </View>
                             </View>
                         }
-                        keyExtractor={item => item.id.toString()} />
+                        keyExtractor={item => item.id.toString()}
+                    />
                     <View style={{ alignItems: 'flex-end' }}>
                         <Text style={styles.textTotalPay}>
                             Total pagar: ${totalPay().toFixed(2)}

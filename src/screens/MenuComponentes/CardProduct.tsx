@@ -29,7 +29,7 @@ export const CardProduct = ({ product, changeStockProduct }: Props) => {
           <Icon
             name='add-shopping-cart'
             size={33}
-            color={'blue'}
+            color={'#ff6347'}
             onPress={() => setShowModal(!showModal)}
           />
         </View>
