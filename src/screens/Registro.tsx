@@ -26,6 +26,7 @@ const Registro = () => {
   const [password, setPassword] = useState('');
   const [nombres, setNombres] = useState('');
   const [numeroCelular, setNumeroCelular] = useState('');
+  const [direccion, setDireccion] = useState('');
   // Función para manejar el registro y guardar los datos
 
   //borrar el contenido de la contrase;a y el email
@@ -34,6 +35,7 @@ const Registro = () => {
     setPassword('');
     setNombres ('');
     setNumeroCelular ('');
+    setDireccion ('');
   }, [navigation]);
 
 
@@ -41,7 +43,7 @@ const Registro = () => {
 
 
   const handleRegister = async () => {
-    if (!email || !password || !nombres || !numeroCelular) {
+    if (!email || !password || !nombres || !numeroCelular || !direccion) {
       Alert.alert('Error', 'Todos los campos son obligatorios');
       return;
     }
@@ -51,6 +53,7 @@ const Registro = () => {
       password,
       nombres,
       numeroCelular,
+      direccion
     };
 
     try {
@@ -72,10 +75,12 @@ const Registro = () => {
   return (
     <View style={styles.containerRegistro}>
             <ImageBackground
-        source={require('../../assets/icon_192.png')}
+        source={require('../../assets/logo_registro_1.png')}
         style={styles.backgroundImageRegistro}
        // resizeMode="cover"
       ></ImageBackground>
+      <View
+      style={styles.containerDatos}>
       <Text style={styles.titleRegistro}>Registro</Text>
 
   
@@ -113,9 +118,19 @@ const Registro = () => {
         secureTextEntry
         autoCapitalize="none"
       />
+            <TextInput
+        style={styles.input}
+        placeholder="Dirección"
+        placeholderTextColor="#aaa"
+        onChangeText={setDireccion}
+       value={direccion}
+       secureTextEntry
+        autoCapitalize="none"
+      />
       <TouchableOpacity style={styles.buttonRegistro} onPress={handleRegister}>
         <Text style={styles.buttonTextRegistro}>Registrarse</Text>
       </TouchableOpacity>
+      </View>
     </View>
   );
 }

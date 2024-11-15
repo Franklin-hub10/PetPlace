@@ -102,7 +102,7 @@ if (existingProductIndex >= 0) {
   return (
     <View style={styles.containerMenu}>
       <ImageBackground
-        source={require('../../assets/startup_screen.png')}
+        source={require('../../assets/logo_1.png')}
         style={styles.backgroundImageMenu}
         resizeMode="cover"
 

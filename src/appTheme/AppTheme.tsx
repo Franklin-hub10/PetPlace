@@ -1,19 +1,39 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 
+//colores de app 
+export const Colors = {
+  primary: 'rgba(209, 93, 7,0.9)',  //naranja para fondos
+  
+  secondary: '#f8f8f8',  // blanco para fondos
+  tercer:'FF7C0A', // naranja para botones
+};
 
 export const styles = StyleSheet.create({
-
+    // Fondo para la pantalla Home
+    fondoHome: {
+      flex: 1,
+      backgroundColor:Colors.primary,
+    },
+     // **Estilos para Portada**
   container: {
     flex: 1,
-    backgroundColor: '#f8f8f8', // Fondo más claro para un mejor contraste
+    backgroundColor: '#f8f8f8',
   },
-  backgroundImage: {
+  appName: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: 'white', // Color naranja
+    textAlign:'justify',
+    marginTop: 20,
+    alignItems:'flex-start',
+  },
+  
+  PrimaryColor: {
+    backgroundColor: '#F6820E', // Cambié color a backgroundColor
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%',
-    height: '100%',
   },
   logo: {
     width: '100%',
@@ -22,9 +42,11 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   loginContainer: {
+    top:'12%',
     width: '80%',
     padding: 20,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    
+    backgroundColor: 'rgba(209, 93, 7,0.9)',
     borderRadius: 10,
   },
   title: {
@@ -34,7 +56,7 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
     textAlign: 'center',
   },
-  input1: {
+  input: {
     height: 50,
     backgroundColor: 'rgba(255, 255, 255, 0.8)',
     borderRadius: 10,
@@ -42,8 +64,19 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
     color: '#000',
   },
+  passwordContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderColor: '#aaa',
+  },
+  IconoPosision: {
+    position: 'absolute',
+    right: 5,
+    top: -20,
+    color: '#000',
+  },
   button: {
-    backgroundColor: '#ff6347',
+    backgroundColor: 'black',
     paddingVertical: 15,
     borderRadius: 10,
   },
@@ -60,38 +93,49 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     textDecorationLine: 'underline',
   },
-  //pagina de registro
+
+  // **Estilos para Registro**
   containerRegistro: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
-    marginTop: "15%",
+    padding: '2%',
+    marginTop: '5%',
+    backgroundColor: '#EDECE8',
   },
+
+  containerDatos: {
+    top:'-1%',
+    width: '95%',
+    padding: 20,
+    backgroundColor:'gray',
+    borderTopStartRadius:25,
+    borderTopRightRadius:25,
+  },
+
 
   titleRegistro: {
     color: '#333',
-    fontSize: 24,
+    fontSize: 30,
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
-    marginTop: "5%",
+    marginTop: '2%',
   },
-
-  input: {
+  input1: {
     height: 50,
     backgroundColor: 'rgba(255, 255, 255, 0.8)',
     borderRadius: 10,
     paddingHorizontal: 10,
     marginBottom: 20,
-    width: '100%',
     color: '#000',
   },
   buttonRegistro: {
-    backgroundColor: '#ff6347',
+    backgroundColor: Colors.primary,
     paddingVertical: 15,
     borderRadius: 10,
     width: '100%',
+    marginTop:'3%',
   },
   buttonTextRegistro: {
     color: 'white',
@@ -99,90 +143,79 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  
   backgroundImageRegistro: {
     flex: 1,
-    justifyContent: 'center',
+   justifyContent: 'center',
     alignItems: 'center',
+    marginTop:'10%',
     width: '100%',
     height: '100%',
   },
+//estilos para registro de mascotas 
+
+unitButton: {
+  padding: 10,
+  borderRadius: 5,
+  marginLeft: 5,
+},
+
+imagePreview: {
+  width: 100,
+  height: 100,
+  borderRadius: 10,
+  marginVertical: 10,
+},
 
 
-  //iconos
-
-
-  passwordContainer: {
-    flexDirection: 'row',   // Alinea el TextInput y el Icon horizontalmente
-    alignItems: 'center',   // Alinea el contenido verticalmente al centro
-    borderColor: '#aaa',
-
-    // paddingRight: 10,       // Espacio para que el ícono no esté pegado al borde
-
-  },
-
-  IconoPosision: {
-    position: 'absolute',
-    right: 10,              // Coloca el ícono 10 unidades desde la derecha
-    justifyContent: 'center',
-    color: '#000',
-    bottom: 0.1
-
-    // marginBottom:20       
-  },
-
+  // **Estilos Generales de Modales**
   modalContainer: {
-
-    flex: 1, // Ocupa toda la pantalla
-    justifyContent: 'center', // Centra el contenido verticalmente
-    alignItems: 'center', // Centra el contenido horizontalmente
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Fondo semitransparente para el modal
-    padding: 20, // Espacio alrede
-
-
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    padding: 20,
   },
-
   modalContent: {
-    width: '90%', // Más ancho para ocupar mayor espacio en la pantalla
+    width: '90%',
     padding: 20,
     backgroundColor: '#fff',
-    borderRadius: 20, // Bordes más redondeados para una apariencia moderna
+    borderRadius: 20,
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 5 },
     shadowOpacity: 0.3,
     shadowRadius: 10,
-    elevation: 10, // S
+    elevation: 10,
   },
   modalTitle: {
-    fontSize: 22, // Tamaño de fuente más grande para resaltar el título
+    fontSize: 22,
     fontWeight: 'bold',
-    color: '#159FAD', // Color principal de la aplicación
+    color: '#159FAD',
     marginBottom: 20,
-    textAlign: 'center', 
-  },
-  headerTable: {
-    flexDirection: 'row',
-  justifyContent: 'space-between',
-  marginBottom: 20, // Espacio más grande entre los elementos
-  paddingVertical: 10,
-  borderBottomWidth: 2,
-  borderColor: '#159FAD',
-  paddingRight:20,
-  left:20,
+    textAlign: 'center',
   },
 
-  
+  // **Estilos de la Tabla**
+  headerTable: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+    paddingVertical: 10,
+    borderBottomWidth: 2,
+    borderColor: '#159FAD',
+    paddingRight: 20,
+    left: 20,
+  },
   headerTableText: {
     fontSize: 16,
     fontWeight: '600',
   },
-
   textHeaderInf: {
-    fontSize: 18, // Tamaño de fuente más grande
+    fontSize: 18,
     fontWeight: '600',
-    color: '#333', // Color de texto oscuro para mejor legibilidad
+    color: '#333',
   },
-
   cellContainer: {
     alignItems: 'center',
     marginHorizontal: 5,
@@ -195,472 +228,181 @@ export const styles = StyleSheet.create({
     fontSize: 12,
     color: '#888',
   },
-
-totalText: {
-  fontSize: 20, // Tamaño de fuente más grande para el total
-  fontWeight: 'bold',
-  color: '#159FAD', // Color principal para el total
-  marginTop: 20,
-  textAlign: 'center', // Centrar el texto del total
-},
-modalCloseText: {
-  fontSize: 18, // Tamaño de fuente más grande para el texto de cierre
-  color: '#ff4444', // Rojo vibrante para resaltar el cierre
-  marginTop: 20,
-  textAlign: 'center',
-},
-  overlay: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  totalText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#159FAD',
+    marginTop: 20,
+    textAlign: 'center',
   },
 
-
-  // modal de productos a seleccionar
-  contentModal: {
-    width: '100%',
-    backgroundColor: '#fff',
-    borderRadius: 10,
-    padding: 20,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 10,
-    elevation: 5,
-  },
-  modalHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%',
-    borderBottomWidth: 1,
-    borderBottomColor: '#159FAD', 
-    paddingBottom: 10,
-  },
-
-
-  contentPrincipal: {
-    backgroundColor: '#FB6F0F',
-    borderRadius: 10,
-    padding: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '82%',
-    height:"51%",
-    alignSelf:"center",
-    marginTop:"25%",
-  },
-
-
-  closeIcon: {
-    padding: 5,
-  },
-  modalBody: {
-    alignItems: 'center',
-  },
-  imagenCard: {
-    width: 150,
-    height: 150,
-    resizeMode: 'contain',
-    marginBottom: 20,
-  },
-  modalText: {
-    fontSize: 16,
-    marginBottom: 10,
-  },
-  controlsContainer: {
-    flexDirection: 'row',
+  // **Botones Generales**
+  buttonAddCard: {
+    backgroundColor: '#159FAD',
+    paddingVertical: 12,
+    paddingHorizontal: 30,
+    borderRadius: 25,
     alignItems: 'center',
     marginTop: 20,
   },
-  quantityContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginRight: 20,
-  },
-  quantityButton: {
-    backgroundColor: '#DDD',
-    padding: 10,
-    borderRadius: 5,
-  },
-  quantityText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginHorizontal: 10,
-  },
-  buyButton: {
-    backgroundColor: '#ff6347',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 5,
-  },
-  buyButtonText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-
-
-
-  textContainer: {
-    flex: 1,
-  },
-
-
-  headerModal: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 20,
-    width:"90%",
-    height:"10%",
-    padding:"2%",
-  },
-  titleModal: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-
-
-
-
-  textTotalPay: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginVertical: 20,
-  },
-
-
-buttonAddCard: {
-  backgroundColor: '#159FAD', // Color principal para el botón
-  paddingVertical: 12,
-  paddingHorizontal: 30, // Más ancho para un botón más prominente
-  borderRadius: 25, // Bordes más redondeados para un aspecto moderno
-  alignItems: 'center',
-  marginTop: 20, // Margen superior para separar el botón del contenido anterior
-},
-
-
   textButtonAddCard: {
     color: 'white',
-    fontSize: 18, // Tamaño de fuente más grande para el texto del botón
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-
-
-
-  imageModal: {
-    width: 150,
-    height: 150,
-    resizeMode: 'contain',
-    marginBottom: 20,
-  },
-  messageStock: {
-    fontSize: 16,
-    color: 'red',
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 10,
-  },
-  contentQuantity: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginVertical: 10,
-  },
-  buttonQuantity: {
-    backgroundColor: '#DDD',
-    padding: 10,
-    borderRadius: 5,
-    marginHorizontal: 10,
-  },
-  textButtonQuantity: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#000',
-  },
-  textQuantity: {
     fontSize: 18,
     fontWeight: 'bold',
     textAlign: 'center',
-    color: '#000',
   },
-
-
-  contentHeaderHome: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingVertical: 15,
-    paddingHorizontal: 20,
-    backgroundColor: '#f5f5f5',
-  },
-
-  textIconCar: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#ff6347',
-    marginRight: 8,
-  },
-
-  //body
-
-  contentBody: {
-    flex: 1,
-    paddingHorizontal: 20,
-    // Espacio interno para el cuerpo
-  },
-  //titulos
-
-
-
-
-
-
-
-  containerMenu: {
-    flex: 1,
-    // backgroundColor: 'gray',
-
-  },
-  backgroundImageMenu: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    opacity: 0.1,  // Esto hace que la imagen de fondo sea más sutil
-  },
-  numCar: {
-    color: 'white',
-    fontSize:15,
-    backgroundColor:'#FB6F0F',
-    borderRadius:100,
-    textAlign:'center',
-    marginTop:"15%",
-  },
-
-  titleText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#333',
-  },
-  productContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 15,
-    marginHorizontal: 20,
-    marginVertical: 10,
-    backgroundColor: '#fff',
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 10,
-    elevation: 5,
-  },
-  productText: {
-    fontSize: 16,
-    color: '#333',
-  },
-  productPrice: {
-    fontSize: 16,
-    color: '#666',
-  },
-  addToCartButton: {
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    backgroundColor: '#007bff',
-    borderRadius: 5,
-  },
-  addToCartButtonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-  cartModal: {
-    flex: 1,
-    backgroundColor: '#fff',
-    padding: 20,
-    borderRadius: 10,
-    marginTop: 50,
-  },
-  cartItemContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingVertical: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#eee',
-  },
-  cartItemText: {
-    fontSize: 16,
-    color: '#333',
-  },
-  cartItemPrice: {
-    fontSize: 16,
-    color: '#007bff',
-  },
-  closeButton: {
-    alignSelf: 'flex-end',
-    padding: 10,
-    backgroundColor: '#ff4444',
-    borderRadius: 5,
-  },
-  closeButtonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-
-  //titulo del menu 
-
-  backgroundImageMenuB: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    opacity: 0.1,
-    zIndex: 1,
-    resizeMode: 'cover', // Asque la imagen de fondo sea más sutil
-  },
-
-
-
-  //menu
-
-  //encabezado
-  posicionF: {
-    backgroundColor: ' #159FAD ',
-    borderRadius: 100,
-    paddingHorizontal: 1,
-    fontSize: 35,
-    fontWeight: 'bold',
-    right: 40,
-  },
-
-  globalTitle: {
-    color: '#159FAD',
-    fontSize: 40,
-    paddingHorizontal: 10,
-    fontWeight: 'bold',
-    textAlign: 'center', // Centrar el título global
-    zIndex: 2, // Asegura que el texto esté encima de la imagen de fondo título global
-    paddingTop: "10%",
-  },
-  containerMenuF: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 20,
-    backgroundColor: 'white',
-    borderBottomWidth: 4,
-    borderBottomColor: 'blak',
-    height: '15%', // Ajusta este valor según el tamaño que desees
-    position: 'relative',
-    bottom: 2,
-    elevation: 4,
-  },
-
-
-  contentCard: {
-    flexDirection: 'column', // Cambiado a columna para apilar elementos verticalmente
-    alignItems: 'center', // Centra horizontalmente los elementos
-    backgroundColor: '#ffffff',
-    borderRadius: 10,
-    // backgroundColor: 'gray',
-    padding: 15, // Ajustado para un espacio más cómodo
-    margin: 5, // Margen reducido para que se ajuste mejor en dos columnas
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
-    shadowRadius: 5,
-    elevation: 4, // Sombra para dar una sensación de profundidad
-  },
-
-  titleCard: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 5,
-    color: '#333', // Color de texto más oscuro para mejor legibilidad
-    textAlign: 'center', // Centrar el texto del título
-  },
-
-  imageCard: {
-    width: 70,
-    height: 70,
-    marginVertical: 10, // Margen vertical para separar imagen del título y precio
-    borderRadius: 5, // Bordes redondeados para una apariencia más suave
-  },
-
-  iconCard: {
-    alignSelf: 'flex-end', // Alinea el ícono al extremo derecho dentro de la tarjeta
-    position: 'absolute', // Permite posicionar el ícono de manera flotante
-    top: 10, // Ajusta la posición vertical
-    right: 10, // Ajusta la posición horizontal
-  },
-
-  priceCard: {
-    fontSize: 16,
-    color: '#888', // Color gris para el precio
-    textAlign: 'center', // Centrar el texto del precio
-    marginTop: 10, // Margen superior para separar del contenido anterior
-  },
-
-  //revisar
-
-  headerTableInf:{
-    flexDirection: 'row',
-    alignItems: 'stretch', 
-    justifyContent: 'space-between', 
-    flex: 1, 
-    marginLeft: 10, 
-    left:1,
-  },
-
-
-  //modal producto
-
-  headerModalP:{
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%',
-    borderBottomWidth: 1,
-  //  borderBottomColor: '#159FAD', 
-    paddingBottom: 10,
-  },
-  contentPrincipalP: {
-    //backgroundColor: '#FB6F0F',
-    borderRadius: 10,
-    padding: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-    height:"100%",
-    alignSelf:"center",
-   // marginTop:"25%",
-  },
-
-  itemContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ddd',
-    paddingBottom: 10,
-    // left:10,
-},
-
-imageItem: {
-    width: 50,
-    height: 50,
-    borderRadius: 5,
-    marginRight: 10,
-},
-
-itemText: {
-    fontSize: 16,
-    color: '#333',
-    marginHorizontal: 5,
-},
+  
+    // Barra superior con menos altura
+    topBar: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      paddingHorizontal: 20,
+      paddingVertical: '10%', // Ajusta la altura
+      backgroundColor: Colors.primary,
+    },
+    welcomeText: {
+      color: '#fff',
+      fontSize: 25,
+      fontWeight: 'bold',
+    },
+  
+    // Contenedor para la lista de mascotas
+    petInfoContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      backgroundColor: Colors.secondary,
+      paddingHorizontal: '5%',
+      paddingVertical: '40%', // Espacio adicional alrededor de las mascotas
+    },
+  
+    // Tarjeta individual de cada mascota
+    petCard: {
+      alignItems: 'center',
+      marginHorizontal: 5, // Más cerca entre tarjetas
+      paddingVertical: 10,
+      width: 150, // Ajuste del ancho de cada tarjeta
+      backgroundColor: '#fff',
+      borderRadius: 10,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.1,
+      shadowRadius: 8,
+      elevation: 3,
+    },
+  
+    // Nombre de la mascota en la parte superior de la tarjeta
+    petName: {
+      fontSize: 16,
+      fontWeight: 'bold',
+      marginBottom: 5,
+      color: 'black',
+    },
+  
+    // Contenedor de la imagen de la mascota con círculo más grande
+    petImageContainer: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: 110, // Ajuste del tamaño del círculo
+      height: 110,
+      borderRadius: 55,
+      backgroundColor: '#f2f2f2',
+      borderWidth: 2,
+      borderColor: Colors.primary,
+    },
+    petImage: {
+      width: 110,
+      height: 110,
+      borderRadius: 55,
+    },
+  
+    // Estilos para el marcador "No Image" en caso de que no haya imagen de la mascota
+    petImagePlaceholder: {
+      width: 110,
+      height: 110,
+      borderRadius: 55,
+      backgroundColor: '#D3D3D3',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    petImagePlaceholderText: {
+      color: '#fff',
+      fontSize: 14,
+      textAlign: 'center',
+    },
+  
+    // Botón para agregar una nueva mascota
+    addPetButton: {
+      backgroundColor: Colors.tercer,
+      borderRadius: 50,
+      padding: 10,
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginLeft: 20,
+    },
+  
+    // Contenedor de promociones
+    promoContainer: {
+      marginHorizontal: 20,
+      marginVertical: 20,
+      padding: 15,
+      borderRadius: 10,
+      backgroundColor: '#fff',
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 5 },
+      shadowOpacity: 0.1,
+      shadowRadius: 5,
+      elevation: 5,
+    },
+  
+    // Título de promociones
+    promotionsTitle: {
+      fontSize: 22,
+      fontWeight: 'bold',
+      color: '#333',
+      marginLeft: 20,
+      
+    },
+  
+    // Contenedor de recuadros de promociones con separación
+    promotionsContainer: {
+      flexDirection: 'row',
+      marginTop: 10,
+      paddingHorizontal: 5, // Separación interna
+      
+    },
+  
+    // Recuadro individual de promoción con mayor separación
+    promotionBox: {
+      width: 120,
+      height: 100,
+      marginRight: 15, // Aumentar espacio entre recuadros
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderWidth: 1,
+      borderColor: '#ddd',
+      borderRadius: 10,
+      backgroundColor: '#f9f9f9',
+    },
+    promotionText: {
+      fontSize: 14,
+      fontWeight: 'bold',
+      color: '#333',
+      textAlign: 'center',
+    },
+  
+    // Menú inferior con iconos
+    iconContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      paddingVertical: 10,
+      backgroundColor: Colors.secondary,
+    },
+    icon: {
+      fontSize: 30,
+      color: Colors.primary,
+    }
 });
+
+
+
