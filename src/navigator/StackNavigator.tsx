@@ -4,7 +4,6 @@ import Portada from '../screens/Portada';
 import Registro from '../screens/Registro';
 import { Menu } from '../screens/Menu';
 import RegistroMascotas from '../screens/RegistroMascotas';
-
 import Home from '../screens/Home';
 import Servicios from '../screens/Servicios';
 import Tienda from '../screens/Tienda';
@@ -14,7 +13,7 @@ export interface RootStackParams {
   Inicio: undefined;
   Registro: undefined;
   Menu: undefined;
-  Tabs: undefined;  // Aquí se hace referencia al TabNavigator
+  Tabs: undefined;
   Home: undefined;
   Servicios: undefined;
   Tienda: undefined;
@@ -28,7 +27,7 @@ const StackNavigator = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerShown: false, // Ocultar la cabecera
+        headerShown: false,
         headerStyle: {
           elevation: 1,
         },

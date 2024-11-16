@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
     // Fondo para la pantalla Home
     fondoHome: {
       flex: 1,
-      backgroundColor:Colors.primary,
+      //backgroundColor:Colors.primary,
     },
      // **Estilos para Portada**
   container: {
@@ -271,7 +271,7 @@ imagePreview: {
     petInfoContainer: {
       flexDirection: 'row',
       alignItems: 'center',
-      backgroundColor: Colors.secondary,
+     // backgroundColor: Colors.secondary,
       paddingHorizontal: '5%',
       paddingVertical: '40%', // Espacio adicional alrededor de las mascotas
     },
@@ -401,7 +401,178 @@ imagePreview: {
     icon: {
       fontSize: 30,
       color: Colors.primary,
-    }
+    },
+    //moda
+
+
+    listItem: {
+      padding: 20,
+      marginVertical: 8,
+      backgroundColor: '#ffffff',
+      flexDirection: 'row',
+      alignItems: 'center',
+      borderRadius: 5,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 5,
+    },
+    listItemText: {
+      flex: 1,
+      marginLeft: 16,
+      fontSize: 18,
+    },
+
+    contentPrincipal: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: 'rgba(0, 0, 0, 0.5)', // Fondo semitransparente para el overlay del modal
+    },
+    contentModal: {
+      backgroundColor: 'white',
+      borderRadius: 20,
+      padding: 20,
+      alignItems: 'center',
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 2
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 4,
+      elevation: 5
+    },
+    headerModal: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      width: '100%',
+      alignItems: 'center'
+    },
+    titleModal: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      flex: 1, // Toma todo el espacio disponible menos el del ícono de cerrar
+      textAlign: 'left',
+      color: '#333'
+    },
+    iconCard: {
+      padding: 10 // Espacio para facilitar la interacción táctil
+    },
+    imageModal: {
+      width: 150,
+      height: 150,
+      resizeMode: 'contain',
+      marginVertical: 20
+    },
+    messageStock: {
+      fontSize: 16,
+      color: 'red',
+      marginTop: 10
+    },
+    contentQuantity: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginTop: 10
+    },
+    buttonQuantity: {
+      backgroundColor: '#e0e0e0',
+      padding: 10,
+      borderRadius: 5
+    },
+    textButtonQuantity: {
+      fontSize: 20,
+      color: '#000'
+    },
+    textQuantity: {
+      fontSize: 16,
+      marginHorizontal: 20,
+      minWidth: 40,
+      textAlign: 'center'
+    },
+ // Estilo del contenedor de la tarjeta de producto
+ contentCard: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  backgroundColor: '#fff',
+  borderRadius: 10,
+  padding: 10,
+  marginVertical: 8,
+  marginHorizontal: 16,
+  shadowColor: '#000',
+  shadowOffset: {
+    width: 0,
+    height: 2,
+  },
+  shadowOpacity: 0.25,
+  shadowRadius: 3.84,
+  elevation: 5, // Para sombras en Android
+},
+// Estilo de la imagen en la tarjeta de producto
+imageCard: {
+  width: 80,
+  height: 80,
+  borderRadius: 10,
+  marginRight: 15,
+},
+// Título del producto en la tarjeta
+titleCard: {
+  fontSize: 16,
+  fontWeight: 'bold',
+  color: '#333',
+},
+
+
+// Estilos para el modal de producto
+
+
+iconCardModal: {
+  padding: 10, // Espacio para el ícono de cierre
+},
+
+ // Contenedor principal del menú
+ containerMenu: {
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: '#f5f5f5',
+},
+// Estilo de la imagen de fondo
+backgroundImageMenu: {
+  position: 'absolute',
+  width: '100%',
+  height: '100%',
+  opacity: 0.3, // Transparencia para hacer que el fondo no sobresalga tanto
+},
+// Contenedor de elementos dentro del menú
+containerMenuF: {
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+  paddingHorizontal: 20,
+},
+// Estilo para el número de productos en el carrito
+numCar: {
+  position: 'absolute',
+  top: -5,
+  right: -10,
+  backgroundColor: '#ff6347',
+  color: '#fff',
+  borderRadius: 10,
+  paddingVertical: 2,
+  paddingHorizontal: 6,
+  fontSize: 12,
+  fontWeight: 'bold',
+  textAlign: 'center',
+},
+// Posicionamiento del ícono del carrito
+posicionF: {
+  position: 'absolute',
+  top: 10,
+  right: 10,
+  padding: 5,
+},
 });
 
 

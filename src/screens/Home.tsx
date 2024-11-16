@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Image, Text, TouchableOpacity, View, ScrollView, FlatList } from 'react-native';
+import { Image, Text, TouchableOpacity, View, ScrollView, FlatList, ImageBackground } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { RootStackParams } from '../navigator/StackNavigator';
@@ -58,6 +58,12 @@ const Home = () => {
 
   return (
     <View style={styles.fondoHome}>
+      <ImageBackground
+        source={require('../../assets/logo_1.png')}
+        style={styles.backgroundImageMenu}
+        resizeMode="cover"
+
+      />
       {/* Barra superior */}
       <View style={styles.topBar}>
         <Text style={styles.welcomeText}>Bienvenido, {userName}</Text>
@@ -122,7 +128,7 @@ const Home = () => {
           <Ionicons name="briefcase" style={styles.icon} />
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate('Tienda')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Menu')}>
           <Ionicons name="storefront" style={styles.icon} />
         </TouchableOpacity>
 

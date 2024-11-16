@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { FlatList, ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { FlatList, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { ModalCar } from './MenuComponentes/ModalCard';
 import { CardProduct } from './MenuComponentes/CardProduct';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
+import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { TitleComponent } from '../componentReutilizables/TitleComponent';
 import { BodyComponent } from '../componentReutilizables/BodyComponent';
 import { styles } from '../appTheme/AppTheme';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export interface Product {
   id: number;
@@ -142,6 +143,25 @@ if (existingProductIndex >= 0) {
         setShowModal={() => setShowModal(!showModal)}
         setCar={() => setCar([])}
         />
+
+          {/* Menú inferior */}
+      <View style={styles.iconContainer}>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <Ionicons name="home" style={styles.icon} />
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => navigation.navigate('Servicios')}>
+          <Ionicons name="briefcase" style={styles.icon} />
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => navigation.navigate('Menu')}>
+          <Ionicons name="storefront" style={styles.icon} />
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => navigation.navigate('MiPerfil')}>
+          <Ionicons name="person" style={styles.icon} />
+        </TouchableOpacity>
+      </View>
     </View>
 
 
