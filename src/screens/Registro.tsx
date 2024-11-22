@@ -124,7 +124,6 @@ const Registro = () => {
         placeholderTextColor="#aaa"
         onChangeText={setDireccion}
        value={direccion}
-       secureTextEntry
         autoCapitalize="none"
       />
       <TouchableOpacity style={styles.buttonRegistro} onPress={handleRegister}>

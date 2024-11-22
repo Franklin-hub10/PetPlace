@@ -112,6 +112,15 @@ export const styles = StyleSheet.create({
     borderTopStartRadius:25,
     borderTopRightRadius:25,
   },
+  containerDatosM: {
+    top:'2%',
+    width: '100%',
+    height:'100%',
+    padding: 20,
+    backgroundColor:'gray',
+    borderTopStartRadius:25,
+    borderTopRightRadius:25,
+  },
 
 
   titleRegistro: {
@@ -177,16 +186,17 @@ imagePreview: {
     padding: 20,
   },
   modalContent: {
-    width: '90%',
-    padding: 20,
-    backgroundColor: '#fff',
-    borderRadius: 20,
-    alignItems: 'center',
+    width: '90%', // Ancho del modal (ajusta según prefieras)
+    padding: 20, // Espaciado interno
+    backgroundColor: '#fff', // Fondo blanco para el contenido del modal
+    borderRadius: 10, // Bordes redondeados
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 5 },
-    shadowOpacity: 0.3,
-    shadowRadius: 10,
-    elevation: 10,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5, // Sombra para Android
+    alignItems: 'center', // Centrar contenido dentro del modal
+  
   },
   modalTitle: {
     fontSize: 22,
@@ -237,20 +247,7 @@ imagePreview: {
   },
 
   // **Botones Generales**
-  buttonAddCard: {
-    backgroundColor: '#159FAD',
-    paddingVertical: 12,
-    paddingHorizontal: 30,
-    borderRadius: 25,
-    alignItems: 'center',
-    marginTop: 20,
-  },
-  textButtonAddCard: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
+ 
   
     // Barra superior con menos altura
     topBar: {
@@ -333,14 +330,48 @@ imagePreview: {
   
     // Botón para agregar una nueva mascota
     addPetButton: {
-      backgroundColor: Colors.tercer,
+      backgroundColor: Colors.primary,
       borderRadius: 50,
-      padding: 10,
+      width: 50,
+      height: 50,
       justifyContent: 'center',
       alignItems: 'center',
-      marginLeft: 20,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.3,
+      shadowRadius: 5,
+      elevation: 5,
     },
-  
+  //nuevas promos
+
+
+  promotionImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 10,
+    marginBottom: 8,
+  },
+
+  promotionPrice: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#FF7C0A',
+    marginTop: 5,
+  },
+  discountBadge: {
+    position: 'absolute',
+    top: 5,
+    right: 5,
+    backgroundColor: '#FF6347',
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 5,
+  },
+  discountBadgeText: {
+    fontSize: 10,
+    fontWeight: 'bold',
+    color: '#fff',
+  },
     // Contenedor de promociones
     promoContainer: {
       marginHorizontal: 20,
@@ -392,16 +423,7 @@ imagePreview: {
     },
   
     // Menú inferior con iconos
-    iconContainer: {
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      paddingVertical: 10,
-      backgroundColor: Colors.secondary,
-    },
-    icon: {
-      fontSize: 30,
-      color: Colors.primary,
-    },
+   
     //moda
 
 
@@ -430,20 +452,7 @@ imagePreview: {
       alignItems: 'center',
       backgroundColor: 'rgba(0, 0, 0, 0.5)', // Fondo semitransparente para el overlay del modal
     },
-    contentModal: {
-      backgroundColor: 'white',
-      borderRadius: 20,
-      padding: 20,
-      alignItems: 'center',
-      shadowColor: '#000',
-      shadowOffset: {
-        width: 0,
-        height: 2
-      },
-      shadowOpacity: 0.25,
-      shadowRadius: 4,
-      elevation: 5
-    },
+    
     headerModal: {
       flexDirection: 'row',
       justifyContent: 'space-between',
@@ -492,9 +501,120 @@ imagePreview: {
       textAlign: 'center'
     },
  // Estilo del contenedor de la tarjeta de producto
- contentCard: {
-  flexDirection: 'row',
-  alignItems: 'center',
+
+ globalTitle: {
+  fontSize: 24, // Tamaño de la fuente
+  fontWeight: 'bold', // Negrita
+  color: Colors.secondary, // Color del texto
+  textAlign: 'center', // Alineación
+  marginVertical: 10, // Margen vertical
+  
+},
+containerMenuF: {
+  flexDirection: 'row', // Alineación horizontal
+  justifyContent: 'space-between', // Separar título e ícono
+  alignItems: 'center', // Centrar verticalmente
+  paddingHorizontal: 16, // Espaciado lateral
+  backgroundColor: Colors.primary,
+  marginTop: '5%', // Margen superior opcional
+  color:Colors.secondary,
+},
+
+cartIconContainer: {
+  position: 'relative', // Para posicionar el contador
+  alignItems: 'center', // Centrar ícono y contador
+},
+cartIcon: {
+  marginLeft: 2, // Separación opcional si el ícono está muy cerca del título
+},
+numCar: {
+  position: 'absolute',
+  top: -5, // Ajusta según el diseño
+  right: -5, // Ajusta según el diseño
+  backgroundColor: 'black', // Fondo del contador
+  color: Colors.secondary, // Color del texto
+  borderRadius: 10, // Redondear el contador
+  paddingHorizontal: 5, // Espaciado interno horizontal
+  fontSize: 12, // Tamaño de texto
+  fontWeight: 'bold',
+  textAlign: 'center',
+},
+// Estilos para el modal de producto
+
+
+
+
+containerMenu: {
+  flex: 1,
+  backgroundColor: '#f5f5f5', // Color de fondo principal
+  justifyContent: 'space-between',
+},
+
+backgroundImageMenu: {
+  position: 'absolute',
+  width: '100%',
+  height: '100%',
+  opacity: 0.1, // Menor opacidad para que los elementos sean más visibles
+},
+
+
+
+
+
+posicionF: {
+  position: 'absolute',
+  top: 2,
+  right: 10,
+  padding: 5,
+  color: Colors.secondary,
+
+},
+
+iconContainer: {
+  flexDirection: 'row', // Alinea los íconos en fila
+  justifyContent: 'space-around', // Distribución uniforme
+  alignItems: 'center', // Centra los íconos verticalmente
+  paddingVertical: 10, // Espaciado interno vertical
+  backgroundColor: '#fff', // Fondo blanco para el menú
+  borderTopWidth: 1, // Línea superior como separador
+  borderTopColor: '#ddd', // Color del separador
+  position: 'absolute', // Fija la posición
+  bottom: 0, // Ubicado al fondo
+  width: '100%', // Ocupa todo el ancho
+},
+
+contentBody: {
+  flex: 1, // Ocupa todo el espacio disponible
+  padding: 10, // Espaciado interno
+  backgroundColor: '#f5f5f5', // Fondo claro
+},
+
+icon: {
+  fontSize: 28, // Tamaño ajustado para íconos
+  color: Colors.primary, // Color principal para los íconos
+},
+
+titleCard: {
+  fontSize: 16,
+  fontWeight: 'bold',
+  textAlign: 'center',
+  color: '#333',
+ // marginBottom: 5, 
+  maxWidth: '100%', 
+  overflow: 'hidden', 
+},
+priceText: {
+  fontSize: 14,
+  color: '#FF7C0A', 
+  fontWeight: '600',
+  textAlign: 'center',
+},
+
+contentCard: {
+  flex: 1,
+  flexDirection: 'column', 
+  justifyContent: 'space-between', 
+  alignItems: 'center', 
   backgroundColor: '#fff',
   borderRadius: 10,
   padding: 10,
@@ -503,80 +623,268 @@ imagePreview: {
   shadowColor: '#000',
   shadowOffset: {
     width: 0,
-    height: 2,
-  },
-  shadowOpacity: 0.25,
-  shadowRadius: 3.84,
-  elevation: 5, // Para sombras en Android
+    height: 2,},
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5, 
+    width: 150, 
+    height: 200, 
+  
 },
-// Estilo de la imagen en la tarjeta de producto
+
 imageCard: {
-  width: 80,
-  height: 80,
+  width: 100,
+  height: 100,
   borderRadius: 10,
-  marginRight: 15,
+  marginBottom: 2,
 },
-// Título del producto en la tarjeta
-titleCard: {
+
+//estilos del modal de fotos de mascotas
+
+
+
+
+closeModalButton: {
+  marginTop: 20,
+  padding: 10,
+  backgroundColor: '#FF7C0A',
+  borderRadius: 10,
+},
+closeModalText: {
+  color: '#fff',
   fontSize: 16,
   fontWeight: 'bold',
+},
+imageOption: {
+  width: 100, // Ancho de la imagen
+  height: 100, // Alto de la imagen
+  borderRadius: 10, // Bordes redondeados
+  margin: 10, // Espaciado alrededor de la imagen
+  borderWidth: 2, // Ancho del borde
+  borderColor: '#FF7C0A', // Color del borde para resaltar
+},
+petCardContainer: {
+  flex: 1,
+  margin: 10,
+  padding: 15,
+  backgroundColor: '#f5f5f5',
+  borderRadius: 10,
+  shadowColor: '#000',
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.2,
+  shadowRadius: 4,
+  elevation: 5,
+  alignItems: 'center',
+},
+
+petCardName: {
+  fontSize: 16,
+  fontWeight: 'bold',
+  marginBottom: 5,
   color: '#333',
 },
 
-
-// Estilos para el modal de producto
-
-
-iconCardModal: {
-  padding: 10, // Espacio para el ícono de cierre
-},
-
- // Contenedor principal del menú
- containerMenu: {
-  flex: 1,
-  justifyContent: 'center',
-  alignItems: 'center',
-  backgroundColor: '#f5f5f5',
-},
-// Estilo de la imagen de fondo
-backgroundImageMenu: {
-  position: 'absolute',
-  width: '100%',
-  height: '100%',
-  opacity: 0.3, // Transparencia para hacer que el fondo no sobresalga tanto
-},
-// Contenedor de elementos dentro del menú
-containerMenuF: {
-  flex: 1,
-  justifyContent: 'center',
-  alignItems: 'center',
-  paddingHorizontal: 20,
-},
-// Estilo para el número de productos en el carrito
-numCar: {
-  position: 'absolute',
-  top: -5,
-  right: -10,
-  backgroundColor: '#ff6347',
-  color: '#fff',
-  borderRadius: 10,
-  paddingVertical: 2,
-  paddingHorizontal: 6,
-  fontSize: 12,
-  fontWeight: 'bold',
+petCardText: {
+  fontSize: 14,
+  color: '#555',
+  marginBottom: 5,
   textAlign: 'center',
 },
-// Posicionamiento del ícono del carrito
-posicionF: {
-  position: 'absolute',
-  top: 10,
-  right: 10,
-  padding: 5,
+
+petCardEditButton: {
+  backgroundColor: '#4CAF50',
+  padding: 10,
+  borderRadius: 5,
+  marginTop: 10,
+  alignSelf: 'stretch',
+},
+
+petCardDeleteButton: {
+  backgroundColor: '#FF5733',
+  padding: 10,
+  borderRadius: 5,
+  marginTop: 5,
+  alignSelf: 'stretch',
 },
 
 
 
+// Estilos relacionados con las tarjetas de mascotas
+mascotaBotonesContainer: {
+  flexDirection: 'row', // Organiza los botones en una fila
+  justifyContent: 'space-between', // Espacio entre los botones
+  marginTop: 10,
+  width: '100%',
+  marginBottom:'40%',
+},
 
+
+mascotasTitulo: {
+  fontSize: 22,
+  fontWeight: 'bold',
+  color: '#333',
+  textAlign: 'center',
+  marginVertical: 20,
+},
+
+mascotaCard: {
+  flex: 1,
+  backgroundColor: '#fff',
+  borderRadius: 10,
+  padding: 10,
+  margin: 5,
+  alignItems: 'center',
+  shadowColor: '#000',
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.2,
+  shadowRadius: 4,
+  elevation: 5,
+ 
+},
+
+mascotaNombre: {
+  fontSize: 15,
+  fontWeight: 'bold',
+  color: '#333',
+  marginBottom: 10,
+},
+
+mascotaDetalle: {
+  fontSize: 10,
+  color: '#666',
+  marginBottom: 5,
+  textAlign: 'center',
+},
+
+mascotaBotonEditar: {
+  backgroundColor: Colors.primary,
+  padding: 10,
+  borderRadius: 5,
+  marginTop: 10,
+  alignSelf: 'stretch',
+  alignItems: 'center',
+},
+
+mascotaBotonEliminar: {
+  backgroundColor: 'black',
+  padding: 10,
+  borderRadius: 5,
+  marginTop: 5,
+  alignSelf: 'stretch',
+  alignItems: 'center',
+},
+
+mascotaBotonTexto: {
+  color: '#fff',
+  fontSize: 14,
+  fontWeight: 'bold',
+},
+
+
+petCardTitle: {
+  fontSize: 18,
+  fontWeight: 'bold',
+  color: '#333',
+  marginBottom: 10,
+},
+
+petCardDetail: {
+  fontSize: 14,
+  color: '#666',
+  marginBottom: 5,
+  textAlign: 'center',
+},
+
+petCardButtonEdit: {
+  backgroundColor: '#4CAF50',
+  padding: 10,
+  borderRadius: 5,
+  marginTop: 10,
+  alignSelf: 'stretch',
+  alignItems: 'center',
+},
+
+petCardButtonDelete: {
+  backgroundColor: '#FF5733',
+  padding: 10,
+  borderRadius: 5,
+  marginTop: 5,
+  alignSelf: 'stretch',
+  alignItems: 'center',
+},
+
+petCardButtonText: {
+  color: '#fff',
+  fontSize: 14,
+  fontWeight: 'bold',
+},
+
+
+contentPrincipalP: {
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: 'rgba(0, 0, 0, 0.5)', // Fondo oscuro translúcido
+},
+contentModal: {
+  backgroundColor: '#fff', // Fondo del modal
+  borderRadius: 10,
+  padding: 20,
+  shadowColor: '#000',
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.25,
+  shadowRadius: 4,
+  elevation: 5,
+},
+headerModalP: {
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  marginBottom: 15,
+},
+
+headerTableInf: {
+  flexDirection: 'row',
+  alignItems: 'center',
+},
+itemContainer: {
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  borderBottomWidth: 1,
+  borderBottomColor: '#ddd',
+  paddingVertical: 10,
+},
+imageItem: {
+  width: 50,
+  height: 50,
+  borderRadius: 5,
+  marginRight: 10,
+},
+itemText: {
+  fontSize: 14,
+  color: '#555',
+  textAlign: 'center',
+},
+textTotalPay: {
+  fontSize: 18,
+  fontWeight: 'bold',
+  color: '#333',
+  marginTop: 10,
+},
+buttonAddCard: {
+  backgroundColor: '#FB6F0F',
+  borderRadius: 5,
+  paddingVertical: 10,
+  paddingHorizontal: 15,
+  alignItems: 'center',
+  marginTop: 15,
+},
+textButtonAddCard: {
+  fontSize: 16,
+  fontWeight: 'bold',
+  color: '#fff',
+},
 
 });
 

@@ -28,18 +28,18 @@ export interface Car {
 }
 
 const products: Product[] = [
-  { id: 1, name: 'ss', price: 1.50, stock: 10, pathImage: 'https://jotajotafoods.com/wp-content/uploads/2022/05/CER00015.jpg' },
-  { id: 2, name: 'ss', price: 1.50, stock: 0, pathImage: 'https://www.aki.com.ec/retornables/wp-content/uploads/2023/04/club335.jpg' },
-  { id: 3, name: 'ss', price: 2.50, stock: 3, pathImage: 'https://static.vecteezy.com/system/resources/previews/037/751/355/non_2x/corona-extra-beer-bottle-isolated-on-a-transparent-background-free-png.png' },
-  { id: 4, name: 'ss', price: 2.00, stock: 4, pathImage: 'https://w7.pngwing.com/pngs/82/1/png-transparent-ale-low-alcohol-beer-budweiser-anheuser-busch-inbev-beer-food-beer-bottle-beer.png' },
-  { id: 5, name: 'sss', price: 2.75, stock: 15, pathImage: 'https://w7.pngwing.com/pngs/203/575/png-transparent-beer-bottle-free-buckle-material-green-heineken-thumbnail.png' },
-  { id: 6, name: 'ssss', price: 3.00, stock: 15, pathImage: 'https://c0.klipartz.com/pngpicture/545/817/gratis-png-pringles-original-lata-pringles-original-pequena-caja-thumbnail.png' },
-  { id: 7, name: 'sssss', price: 2.00, stock: 10, pathImage: 'https://farmaenlace.vtexassets.com/arquivos/ids/163099-800-auto?v=638083710702630000&width=800&height=auto&aspect=true' },
-  { id: 8, name: 'sssss', price: 1.50, stock: 18, pathImage: 'https://e7.pngegg.com/pngimages/342/103/png-clipart-cheetos-crunchy-party-size-plastic-pack-cheetos-cheese-puffs-snack-frito-lay-cheetos-crunchy-pack-food-cheese-thumbnail.png' },
-  { id: 9, name: 'ssssssss', price: 1.50, stock: 15, pathImage: 'https://images.rappi.com.ec/products/d64db69e-c179-4fd2-ada4-5e25c8e5c511.png?e=webp&q=80&d=130x130' },
-  { id: 10, name: 'Msss', price: 1.00, stock: 10, pathImage: 'https://golozinalujan.com/wp-content/uploads/2023/01/Diseno-sin-titulo-24-4.png' },
+  { id: 1, name: 'Royal Canine', price: 1.50, stock: 10, pathImage: 'https://citypet.ec/wp-content/uploads/2020/04/Alimento-para-perros-Royal-Canin-Mini-Puppy.jpg' },
+  { id: 2, name: 'Juguete', price: 1.50, stock: 0, pathImage: 'https://wongfood.vtexassets.com/arquivos/ids/516957-1600-auto?v=637789953726470000&width=1600&height=auto&aspect=true' },
+  { id: 3, name: 'Pro Plan', price: 2.50, stock: 3, pathImage: 'https://purina.com.ec/sites/default/files/styles/simple_card/public/2022-08/puppy_pro_plan.png.webp?itok=-SLLVvPs' },
+  { id: 4, name: 'Pro Plan +', price: 2.00, stock: 4, pathImage: 'https://purina.com.ec/sites/default/files/styles/simple_card/public/2022-08/puppy_pro_plan.png.webp?itok=-SLLVvPs' },
+  { id: 5, name: 'Golosina', price: 2.75, stock: 15, pathImage: 'https://purina.com.ec/sites/default/files/styles/simple_card/public/2022-08/reduced_calorie_pro_plan.png.webp?itok=m9aQv_1M' },
+  { id: 6, name: 'ssss', price: 3.00, stock: 15, pathImage: 'https://s.libertaddigital.com/2022/02/13/snacks-para-perros-arquivet-twist-con-pollo-enrollado.jpg' },
+  { id: 7, name: 'Bull Stick', price: 2.00, stock: 10, pathImage: 'https://farmaenlace.vtexassets.com/arquivos/ids/163099-800-auto?v=638083710702630000&width=800&height=auto&aspect=true' },
+  { id: 8, name: 'Juguete', price: 1.50, stock: 18, pathImage: 'https://kywiec.vtexassets.com/arquivos/ids/195841-800-auto?v=638476050379170000&width=800&height=auto&aspect=true' },
+  { id: 9, name: 'Ollie', price: 1.50, stock: 15, pathImage: 'https://m.media-amazon.com/images/I/711dB6ysBoL._AC_UF1000,1000_QL80_.jpg' },
+  { id: 10, name: 'Lollies', price: 1.00, stock: 10, pathImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO4AFtvY_b8bHZhgeGBdOjhq2caRvvMuEfEA&s' },
 
-];
+];  
 
 
 
@@ -155,7 +155,7 @@ if (existingProductIndex >= 0) {
           <Ionicons name="home" style={styles.icon} />
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate('Servicios')}>
+        <TouchableOpacity onPress={() => navigation.navigate('RegistroMascotas')}>
           <Ionicons name="briefcase" style={styles.icon} />
         </TouchableOpacity>
 
@@ -167,6 +167,7 @@ if (existingProductIndex >= 0) {
           <Ionicons name="person" style={styles.icon} />
         </TouchableOpacity>
       </View>
+      
     </View>
 
 

@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { Alert, ImageBackground, Text, TextInput, TouchableOpacity, View, Image } from 'react-native';
+import { Alert, ImageBackground, Text, TextInput, TouchableOpacity, View, Image, Modal, FlatList } from 'react-native';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { RootStackParams } from '../navigator/StackNavigator';
 import { styles } from '../appTheme/AppTheme';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { launchImageLibrary, ImageLibraryOptions } from 'react-native-image-picker';
-
 
 const RegistroMascotas = () => {
   const navigation = useNavigation<NavigationProp<RootStackParams>>();
@@ -18,13 +16,22 @@ const RegistroMascotas = () => {
   const [unidadPeso, setUnidadPeso] = useState('kg');
   const [descripcionMascota, setDescripcionMascota] = useState('');
   const [imageUri, setImageUri] = useState<string | null>(null);
+  const [modalVisible, setModalVisible] = useState(false);
+
+  // Lista de imágenes predeterminadas
+  const defaultImages = [
+    { id: '1', uri: 'https://hospitalveterinariodonostia.com/wp-content/uploads/2021/02/ninos-914x457.png' },
+    { id: '2', uri: 'https://labyes.com/wp-content/uploads/2022/05/chihuahua.jpg' },
+    { id: '3', uri: 'https://petfly.io/wp-content/uploads/2024/09/perro-en-la-playa-con-requisitos-para-viajara-mexico-scaled-1-1024x683.webp' },
+    { id: '4', uri: 'https://cvfaunia.com/wp-content/uploads/2020/12/empleo-2.jpg' },
+  ];
 
   const handleRegister = async () => {
     if (!nombresMascota || (!edadAnios && !edadMeses) || !raza || !peso || !descripcionMascota) {
       Alert.alert('Error', 'Todos los campos son obligatorios');
       return;
     }
-  
+
     const newPetData = {
       nombresMascota,
       edad: { anios: edadAnios, meses: edadMeses },
@@ -34,18 +41,15 @@ const RegistroMascotas = () => {
       descripcionMascota,
       imageUri, // Guardar la URI de la imagen
     };
-  
+
     try {
-      // Obtiene las mascotas ya guardadas
       const existingPets = await AsyncStorage.getItem('petsData');
       const petsArray = existingPets ? JSON.parse(existingPets) : [];
-  
-      // Agrega la nueva mascota al array
+
       petsArray.push(newPetData);
-  
-      // Guarda el array actualizado de mascotas
+
       await AsyncStorage.setItem('petsData', JSON.stringify(petsArray));
-  
+
       Alert.alert('Registro Exitoso', `${nombresMascota} ha sido registrado exitosamente.`);
       navigation.navigate('Home');
     } catch (error) {
@@ -53,26 +57,10 @@ const RegistroMascotas = () => {
       console.error(error);
     }
   };
-  
 
-  const selectImage = () => {
-    const options: ImageLibraryOptions = {
-      mediaType: 'photo',
-      maxWidth: 300,
-      maxHeight: 300,
-      quality: 0.7,
-    };
-
-    launchImageLibrary(options, (response) => {
-      if (response.didCancel) {
-        console.log('El usuario canceló la selección de imagen');
-      } else if (response.errorCode) {
-        console.log('Error al seleccionar imagen:', response.errorMessage);
-      } else if (response.assets && response.assets.length > 0) {
-        const uri = response.assets[0].uri;
-        setImageUri(uri || null);  // Actualizar la URI de la imagen
-      }
-    });
+  const selectImage = (uri: string) => {
+    setImageUri(uri);
+    setModalVisible(false);
   };
 
   return (
@@ -120,8 +108,7 @@ const RegistroMascotas = () => {
           value={raza}
           autoCapitalize="none"
         />
-        
-        
+
         <TextInput
           style={styles.input}
           placeholder="Color"
@@ -173,7 +160,7 @@ const RegistroMascotas = () => {
           <Image source={{ uri: imageUri }} style={styles.imagePreview} />
         )}
 
-        <TouchableOpacity style={styles.buttonRegistro} onPress={selectImage}>
+        <TouchableOpacity style={styles.buttonRegistro} onPress={() => setModalVisible(true)}>
           <Text style={styles.buttonTextRegistro}>Foto de tu mascota</Text>
         </TouchableOpacity>
 
@@ -181,6 +168,26 @@ const RegistroMascotas = () => {
           <Text style={styles.buttonTextRegistro}>Registrar Mascota</Text>
         </TouchableOpacity>
       </View>
+
+      <Modal visible={modalVisible} transparent={true} animationType="slide">
+        <View style={styles.modalContainer}>
+          <FlatList
+            data={defaultImages}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+              <TouchableOpacity onPress={() => selectImage(item.uri)}>
+                <Image source={{ uri: item.uri }} style={styles.imageOption} />
+              </TouchableOpacity>
+            )}
+          />
+          <TouchableOpacity
+            style={styles.closeModalButton}
+            onPress={() => setModalVisible(false)}
+          >
+            <Text style={styles.closeModalText}>Cerrar</Text>
+          </TouchableOpacity>
+        </View>
+      </Modal>
     </View>
   );
 };
