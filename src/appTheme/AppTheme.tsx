@@ -573,6 +573,11 @@ posicionF: {
   right: 10,
   padding: 5,
 },
+
+
+
+
+
 });
 
 

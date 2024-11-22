@@ -8,6 +8,7 @@ import { TitleComponent } from '../componentReutilizables/TitleComponent';
 import { BodyComponent } from '../componentReutilizables/BodyComponent';
 import { styles } from '../appTheme/AppTheme';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { RootStackParams } from '../navigator/StackNavigator';
 
 export interface Product {
   id: number;
@@ -27,22 +28,26 @@ export interface Car {
 }
 
 const products: Product[] = [
-  { id: 1, name: 'Pilsener', price: 1.50, stock: 10, pathImage: 'https://jotajotafoods.com/wp-content/uploads/2022/05/CER00015.jpg' },
-  { id: 2, name: 'Club', price: 1.50, stock: 0, pathImage: 'https://www.aki.com.ec/retornables/wp-content/uploads/2023/04/club335.jpg' },
-  { id: 3, name: 'Corona', price: 2.50, stock: 3, pathImage: 'https://static.vecteezy.com/system/resources/previews/037/751/355/non_2x/corona-extra-beer-bottle-isolated-on-a-transparent-background-free-png.png' },
-  { id: 4, name: 'Bludwaser', price: 2.00, stock: 4, pathImage: 'https://w7.pngwing.com/pngs/82/1/png-transparent-ale-low-alcohol-beer-budweiser-anheuser-busch-inbev-beer-food-beer-bottle-beer.png' },
-  { id: 5, name: 'Heiniken', price: 2.75, stock: 15, pathImage: 'https://w7.pngwing.com/pngs/203/575/png-transparent-beer-bottle-free-buckle-material-green-heineken-thumbnail.png' },
-  { id: 6, name: 'Pringles', price: 3.00, stock: 15, pathImage: 'https://c0.klipartz.com/pngpicture/545/817/gratis-png-pringles-original-lata-pringles-original-pequena-caja-thumbnail.png' },
-  { id: 7, name: 'Manicris', price: 2.00, stock: 10, pathImage: 'https://farmaenlace.vtexassets.com/arquivos/ids/163099-800-auto?v=638083710702630000&width=800&height=auto&aspect=true' },
-  { id: 8, name: 'Cheetos', price: 1.50, stock: 18, pathImage: 'https://e7.pngegg.com/pngimages/342/103/png-clipart-cheetos-crunchy-party-size-plastic-pack-cheetos-cheese-puffs-snack-frito-lay-cheetos-crunchy-pack-food-cheese-thumbnail.png' },
-  { id: 9, name: 'Doritos', price: 1.50, stock: 15, pathImage: 'https://images.rappi.com.ec/products/d64db69e-c179-4fd2-ada4-5e25c8e5c511.png?e=webp&q=80&d=130x130' },
-  { id: 10, name: 'Mogul', price: 1.00, stock: 10, pathImage: 'https://golozinalujan.com/wp-content/uploads/2023/01/Diseno-sin-titulo-24-4.png' },
+  { id: 1, name: 'ss', price: 1.50, stock: 10, pathImage: 'https://jotajotafoods.com/wp-content/uploads/2022/05/CER00015.jpg' },
+  { id: 2, name: 'ss', price: 1.50, stock: 0, pathImage: 'https://www.aki.com.ec/retornables/wp-content/uploads/2023/04/club335.jpg' },
+  { id: 3, name: 'ss', price: 2.50, stock: 3, pathImage: 'https://static.vecteezy.com/system/resources/previews/037/751/355/non_2x/corona-extra-beer-bottle-isolated-on-a-transparent-background-free-png.png' },
+  { id: 4, name: 'ss', price: 2.00, stock: 4, pathImage: 'https://w7.pngwing.com/pngs/82/1/png-transparent-ale-low-alcohol-beer-budweiser-anheuser-busch-inbev-beer-food-beer-bottle-beer.png' },
+  { id: 5, name: 'sss', price: 2.75, stock: 15, pathImage: 'https://w7.pngwing.com/pngs/203/575/png-transparent-beer-bottle-free-buckle-material-green-heineken-thumbnail.png' },
+  { id: 6, name: 'ssss', price: 3.00, stock: 15, pathImage: 'https://c0.klipartz.com/pngpicture/545/817/gratis-png-pringles-original-lata-pringles-original-pequena-caja-thumbnail.png' },
+  { id: 7, name: 'sssss', price: 2.00, stock: 10, pathImage: 'https://farmaenlace.vtexassets.com/arquivos/ids/163099-800-auto?v=638083710702630000&width=800&height=auto&aspect=true' },
+  { id: 8, name: 'sssss', price: 1.50, stock: 18, pathImage: 'https://e7.pngegg.com/pngimages/342/103/png-clipart-cheetos-crunchy-party-size-plastic-pack-cheetos-cheese-puffs-snack-frito-lay-cheetos-crunchy-pack-food-cheese-thumbnail.png' },
+  { id: 9, name: 'ssssssss', price: 1.50, stock: 15, pathImage: 'https://images.rappi.com.ec/products/d64db69e-c179-4fd2-ada4-5e25c8e5c511.png?e=webp&q=80&d=130x130' },
+  { id: 10, name: 'Msss', price: 1.00, stock: 10, pathImage: 'https://golozinalujan.com/wp-content/uploads/2023/01/Diseno-sin-titulo-24-4.png' },
 
 ];
 
 
 
 export const Menu = () => {
+
+
+  const navigation = useNavigation<NavigationProp<RootStackParams>>();
+
   //hook useState: manipular el arreglo de productos
   const [productsState, setProductsState] = useState(products);
 
